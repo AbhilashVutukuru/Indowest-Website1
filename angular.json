@@ -31,15 +31,35 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+                  {
+    "glob": "**/*",
+    "input": "src/assets",
+    "output": "/assets/"
+  },
+  {
+    "glob": "**/*",
+    "input": "public",
+    "output": "/"
+  },
+  "src/favicon.ico"
+                ],
             "styles": [
-              "src/styles.css"
+               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+  "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+  "node_modules/aos/dist/aos.css",
+  "node_modules/animate.css/animate.min.css",
+  "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+  "node_modules/@popperjs/core/dist/umd/popper.min.js",
+  "node_modules/aos/dist/aos.js",
+  "node_modules/owl.carousel/dist/owl.carousel.min.js"
+ 
+            ]
           },
           "configurations": {
             "production": {
@@ -102,5 +122,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,0 +1,462 @@
+/* Header Section */
+.services-header {
+  padding: 30px 8% 50px 8%;
+  position: relative;
+  background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+  text-align: center;
+  color: #111;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-radius: 999px;
+  padding: 8px 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.badge .year {
+  background: #ffb400;
+  color: #111;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.badge .tagline {
+  font-size: 13px;
+  color: #444;
+}
+
+.section-title {
+  font-size: 16px;
+  color: #666;
+  font-weight: 601;
+  margin-bottom: 10px;
+}
+
+.services-content h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #01a6f0;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.services-content p {
+  font-size: 28px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.services-content p .highlight {
+  color: #062f92;
+}
+
+/* HOW WE WORK / PROJECT SECTION */
+.how-we-work {
+  background: #fff;
+  padding: 60px 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.how-we-work .container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 15px;
+}
+
+.section-header p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Project Rows */
+.work-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+  min-height: 400px;
+}
+
+.work-row.reverse .work-content {
+  order: 2;
+}
+
+.work-row.reverse .work-image {
+  order: 1;
+}
+
+/* Project Text Section */
+.work-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.work-content h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+}
+
+.work-content p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.work-content ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.work-content ul li {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.work-content ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #01a6f0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Project Image Section */
+.work-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.work-image img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* ICON COLORS */
+.blue { color: #007bff; margin-right: 12px; }
+.orange { color: #ff9800; margin-right: 12px; }
+.green { color: #16a34a; margin-right: 12px; }
+
+/* OUR PROCESS SECTION - IMPROVED VERTICAL ALIGNMENT */
+.process-section {
+  padding: 80px 8%;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.process-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 15px;
+}
+
+.process-title span {
+  color: #009dff;
+}
+
+.process-subtitle {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: stretch; /* Ensures all cards have same height */
+}
+
+.process-step {
+  background: white;
+  border-radius: 16px;
+  padding: 35px 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures full height within grid */
+  min-height: 320px; /* Fixed minimum height for consistency */
+  justify-content: flex-start; /* Align content from top */
+}
+
+.process-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 auto 20px auto;
+  position: relative;
+  flex-shrink: 0; /* Prevent number from shrinking */
+}
+
+.step-number::after {
+  content: '';
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.step-1 .step-number { background: #25a8e0; }
+.step-1 .step-number::after { background: #25a8e0; }
+
+.step-2 .step-number { background: #f56b2a; }
+.step-2 .step-number::after { background: #f56b2a; }
+
+.step-3 .step-number { background: #68b92e; }
+.step-3 .step-number::after { background: #68b92e; }
+
+.step-4 .step-number { background: #ff9800; }
+.step-4 .step-number::after { background: #ff9800; }
+
+.process-step h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #222;
+  flex-shrink: 0; /* Prevent title from shrinking */
+  line-height: 1.4;
+}
+
+.process-step p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  flex-grow: 1; /* Allow paragraph to grow and fill space */
+  margin: 0; /* Remove default margins */
+}
+
+.step-icon {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #009dff;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* RESPONSIVE DESIGN */
+
+
+/* Tablets */
+@media (max-width: 1200px) {
+  .work-row { gap: 60px; }
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+  }
+  
+  .process-step {
+    min-height: 300px; /* Adjusted for tablet */
+  }
+}
+
+/* Tablets / Small Laptops */
+@media (max-width: 992px) {
+  .work-row {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+  }
+
+  .work-content {
+    text-align: center;
+    padding: 0 10%;
+  }
+
+  .work-image img {
+    height: 350px;
+    max-width: 80%;
+  }
+
+  .section-header h2 { font-size: 30px; }
+
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .process-step {
+    min-height: 280px; /* Adjusted for smaller screens */
+    padding: 30px 20px;
+  }
+}
+
+/* Large Desktop (1700px and above) - FIXED VERSION */
+@media (min-width: 1700px) {
+  .how-we-work .container,
+  .process-steps {
+    max-width: 1400px; /* Keep same as laptop view */
+  }
+  
+  .process-step {
+    min-height: 320px; /* Keep same as laptop view */
+    padding: 35px 25px; /* Keep same as laptop view */
+  }
+  
+  /* Ensure work rows maintain same proportions */
+  .work-row {
+    gap: 80px; /* Same as laptop view */
+    min-height: 400px; /* Same as laptop view */
+  }
+  
+  .work-image img {
+    height: 400px; /* Same as laptop view */
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .how-we-work { padding: 70px 0; }
+
+  .work-content h3 { font-size: 22px; }
+  .work-content p { font-size: 15px; }
+
+  .work-image img { height: 280px; width: 100%; }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    gap: 25px;
+  }
+  
+  .process-step {
+    min-height: auto; /* Remove fixed height on mobile */
+    height: auto; /* Allow natural height on mobile */
+  }
+
+  .services-header { padding: 30px 5%; }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+  .work-content h3 { font-size: 20px; }
+  .work-content p, .work-content ul li { font-size: 14px; }
+  .work-image img { height: 230px; }
+
+  .process-step {
+    padding: 25px 20px;
+  }
+
+  .step-number {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .step-number::after {
+    width: 55px;
+    height: 55px;
+  }
+
+  .step-icon { font-size: 2rem; }
+  
+  .process-step h3 {
+    font-size: 1.1rem;
+  }
+  
+  .process-step p {
+    font-size: 0.85rem;
+  }
+}
+
+/* FIX FOR PROJECT-BASED DELIVERY ON MOBILE */
+@media (max-width: 992px) {
+  .work-row.reverse .work-content,
+  .work-row.reverse .work-image {
+    order: unset; /* Reset order for mobile */
+  }
+}
+
+/* Animation initial state */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* When visible */
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: smooth stagger for multiple items */
+.animate-on-scroll:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.animate-on-scroll:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.animate-on-scroll:nth-child(4) {
+  transition-delay: 0.3s;
+}

@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'indowest-website';
+   isLoading = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500); // adjust time (ms) or remove once route loaded
+  }
 }

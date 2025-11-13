@@ -1,0 +1,232 @@
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #f4f7fb;
+  border-bottom: 1px solid rgba(11, 27, 45, 0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo-img {
+  height: 45px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  font-family: 'Poppins', sans-serif; /* Added font family */
+}
+
+.nav-link:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.nav-link.active {
+  color: var(--text);
+  border-bottom: 4px solid var(--accent-2);
+  font-family: 'Poppins', sans-serif; /* Added font family */
+}
+
+/* Header Buttons */
+.header-cta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.theme-toggle {
+  border: 0;
+  background: var(--card);
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text);
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Button Style */
+.btn {
+  background: linear-gradient(135deg, #FFD54F, #FFB300);
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 160, 80, 0.3);
+}
+
+/* 🌓 Dark Mode Adjustments */
+body.dark-theme .site-header {
+  background-color: #0b0b0b;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .nav-link {
+  color: #cbd5e1;
+}
+
+body.dark-theme .nav-link.active {
+  color: #38bdf8;
+}
+
+body.dark-theme .brand-logo-img {
+  filter: brightness(0) invert(1);
+}
+
+/* Responsive Styles */
+.navbar-toggler {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding-right: 31px;
+}
+
+.navbar-toggler:hover {
+  transform: scale(1.1);
+}
+
+/* Hide nav on small screens by default */
+@media (max-width: 991px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    padding: 12px 0;
+    text-align: center;
+    animation: slideDown 0.3s ease;
+  }
+
+  body.dark-theme .main-nav {
+    background-color: #0b0b0b;
+  }
+
+  .main-nav.show {
+    display: flex;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 12px;
+    font-family: 'Poppins', sans-serif; /* Added font family */
+  }
+
+  .nav-link.active {
+    font-family: 'Poppins', sans-serif; /* Added font family */
+  }
+
+  /* ✅ Keep buttons on same line */
+  .header-cta {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+    gap: 10px;
+  }
+
+  .theme-toggle {
+    flex: 0 0 auto;
+  }
+
+  .btn.primary {
+    flex: 0 0 auto;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .main-nav {
+    gap: 10px;
+  }
+
+  .btn.primary {
+    padding: 8px 14px;
+  }
+}
+
+/* Desktop refinement */
+@media (min-width: 1201px) {
+  .main-nav {
+    display: flex !important;
+  }
+}
+
+/* Animation for smooth nav open */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

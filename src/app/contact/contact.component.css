@@ -1,0 +1,509 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #f8fafc;
+  color: #1a1a1a;
+}
+
+.contact-section {
+  padding: 35px 8%;
+}
+
+/* ----- Intro Section ----- */
+.contact-intro {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+}
+
+.badge .year {
+  background: #ffc400;
+  color: #000;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.badge .text {
+  color: #333;
+  font-weight: 500;
+}
+
+.contact-intro h4 {
+ font-size: 16px;
+  color: #666;
+  font-weight: 601;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.contact-intro h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.contact-intro h1 span {
+  color: #1da1f2;
+}
+
+.contact-intro p {
+  color: #555;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-intro p .highlight {
+  color: #1da1f2;
+  font-weight: 600;
+}
+
+/* ----- Main Contact Layout ----- */
+/* Left Side - Form */
+.contact-form {
+  background: #e9f5ff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.form-header .icon {
+  background: #1da1f2;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.form-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #1da1f2;
+}
+
+.submit-btn {
+  background: #1da1f2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background: #0078c8;
+}
+
+/* Right Side - Info */
+.contact-info {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  height: 100%;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.info-header .icon {
+  background: #ff5a1f;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.info-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Info Cards - 2+1 Layout */
+.info-cards {
+  margin-top: 20px;
+}
+
+.info-cards .card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  margin-bottom: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-cards .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.card i {
+  font-size: 1.4rem;
+  color: white;
+  background: #999;
+  padding: 12px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card h4 {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.card p {
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Card Colors */
+.card.blue i {
+  background: #1da1f2;
+}
+
+.card.orange i {
+  background: #ff5a1f;
+}
+
+.card.green i {
+  background: #4caf50;
+}
+
+/* Maps Section */
+.maps-section {
+  padding: 30px 8%;
+}
+
+.contact-card, .map-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  height: 100%;
+}
+
+.map-card {
+  background: #e8f6e8;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background: #1da1f2;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.icon-box.green {
+  background: #7cc242;
+}
+
+.card-header h2 {
+  font-size: 1.3rem;
+  color: #3ba949;
+  margin: 0;
+}
+
+.card-header p {
+  color: #007bff;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.info p {
+  margin: 10px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.info i {
+  color: #007bff;
+  margin-right: 10px;
+  width: 16px;
+}
+
+/* Buttons */
+.blue-btn, .green-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.green-btn {
+  background: #2eb02e;
+}
+
+.blue-btn:hover, .green-btn:hover {
+  opacity: 0.9;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Map Card Buttons */
+.btn-row {
+  margin-top: 15px;
+}
+
+/* Business Hours */
+.business-hours {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  border-left: 4px solid #1da1f2;
+}
+
+.business-hours h4 {
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+  font-size: 1.2rem;
+}
+
+.business-hours p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* UK Office Section */
+.uk-office {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+}
+
+.uk-office h3 {
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contact-form,
+  .contact-info {
+    padding: 30px;
+  }
+  
+  .contact-intro h1 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 25px 5%;
+  }
+  
+  .maps-section {
+    padding: 25px 5%;
+  }
+  
+  .contact-intro h1 {
+    font-size: 2rem;
+  }
+  
+  .contact-intro p {
+    font-size: 1rem;
+  }
+  
+  .contact-form,
+  .contact-info {
+    padding: 25px;
+  }
+  
+  .info-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .form-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-intro h1 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-intro p {
+    font-size: 0.95rem;
+  }
+  
+  .badge {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .contact-form,
+  .contact-info {
+    padding: 20px;
+  }
+  
+  .contact-card,
+  .map-card {
+    padding: 20px;
+  }
+  
+  .info-cards .card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15px;
+  }
+  
+  .info-cards .card i {
+    margin-bottom: 10px;
+  }
+  
+  .btn-row .row .col-6 {
+    margin-bottom: 10px;
+  }
+}
+
+
+
+/* Animation initial state */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* When visible */
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: smooth stagger for multiple items */
+.animate-on-scroll:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.animate-on-scroll:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.animate-on-scroll:nth-child(4) {
+  transition-delay: 0.3s;
+}

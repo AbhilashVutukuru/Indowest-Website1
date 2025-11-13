@@ -1,0 +1,40 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- Brand Logo -->
+    <div class="brand">
+<img src="./assets/logo.png" alt="Indowest United" class="brand-logo-img" />
+    </div>
+
+    <!-- Hamburger icon (visible only on mobile/tablet) -->
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      (click)="toggleMenu()"
+      aria-label="Toggle navigation"
+    >
+      ☰
+    </button>
+
+    <!-- Navigation -->
+    <nav
+      class="main-nav"
+      [class.show]="menuOpen"
+      aria-label="Main navigation"
+    >
+      <a class="nav-link active" href="home">Home</a>
+      <a class="nav-link" href="about">About</a>
+      <a class="nav-link" href="services">Services</a>
+      <a class="nav-link" href="how-we-work">How We Work</a>
+      <a class="nav-link" href="contact">Contact</a>
+    </nav>
+
+    <!-- CTA + Theme Toggle -->
+    <div class="header-cta">
+      <button class="theme-toggle" (click)="toggleTheme()">
+        {{ (themeService.isDarkMode$ | async) ? '☀️' : '🌙' }}
+      </button>
+      <a class="btn primary" href="quality-assurance">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
