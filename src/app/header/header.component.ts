@@ -4,10 +4,9 @@ import { ThemeService } from '../../theme.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
   menuOpen = false;
 
   constructor(public themeService: ThemeService) {}

@@ -4,7 +4,9 @@
       <!-- Company Info -->
       <div class="col-lg-3 col-md-6">
         <div class="footer-logo animate-on-scroll">
-          <img src="assets/logo.png" alt="Indowest United Logo" />
+         <img 
+    [src]="(themeService.isDarkMode$ | async) ? './assets/darkTheme.png' : './assets/logo.png'" 
+    alt="Indowest United" />
         </div>
         <div class="footer-widget-desc animate-on-scroll">
           <p>24 years of software excellence. India-based, globally scalable solutions.</p>

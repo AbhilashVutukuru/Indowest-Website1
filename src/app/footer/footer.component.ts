@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ThemeService } from '../../theme.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,13 @@ import { RouterModule } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 isScrolled = false;
+menuOpen = false;
+
+  constructor(public themeService: ThemeService) {}
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
 
   @HostListener('window:scroll')
   onWindowScroll() {

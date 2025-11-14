@@ -1,10 +1,13 @@
 <header class="site-header">
   <div class="container header-inner">
     <!-- Brand Logo -->
-    <div class="brand">
-<img src="./assets/logo.png" alt="Indowest United" class="brand-logo-img" />
-    </div>
-
+  <div class="brand">
+  <img 
+    [src]="(themeService.isDarkMode$ | async) ? './assets/darkTheme.png' : './assets/logo.png'" 
+    alt="Indowest United" 
+    class="brand-logo-img" 
+  />
+</div>
     <!-- Hamburger icon (visible only on mobile/tablet) -->
     <button
       class="navbar-toggler d-lg-none"

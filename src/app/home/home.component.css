@@ -1009,7 +1009,7 @@ ul[class^="ring"] li {
 
 .team-image {
     position: relative;
-    height: 260px;
+    height: 285px;
     overflow: hidden;
     flex-shrink: 0;
 }

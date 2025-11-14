@@ -553,7 +553,7 @@ body.dark-theme .readmore a:hover {
 
 /* Footer */
 body.dark-theme .footer-area.style-one {
-  background: black;
+  background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%);
   border-top: 1px solid #2A2A2A;
 }
 
@@ -674,10 +674,17 @@ body.dark-theme .prgoress_indicator i {
 }
 
 /* Logo Adjustments */
-body.dark-theme .brand-logo-img,
-body.dark-theme .footer-logo {
-filter: brightness(0) saturate(100%) invert(36%) sepia(90%) saturate(3000%) hue-rotate(190deg) brightness(95%) contrast(90%);
+body.dark-theme .brand-logo-img
+ {
+height: 51px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
 
+body.dark-theme .footer-logo img{
+  height: 54px !important;
 }
 
 /* Accessibility */
