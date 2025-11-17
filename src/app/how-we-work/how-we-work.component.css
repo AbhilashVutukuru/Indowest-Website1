@@ -71,6 +71,7 @@
   max-width: 1400px;
   margin: auto;
   padding: 0 40px;
+   overflow: hidden; /* Add this */
 }
 
 .section-header {

@@ -11,6 +11,7 @@
   background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
   text-align: center;
   color: #111;
+   overflow: hidden;
 }
 
 
@@ -19,6 +20,7 @@
     margin: 0 auto;
     padding: 0 15px; /* Reduced from 20px to 15px */
     width: 100%;
+     overflow: hidden; /* Add this */
 }
 .badge {
   display: inline-flex;
@@ -77,6 +79,7 @@
 .services-section {
   padding: 80px 0;
   background: #fff;
+   overflow: hidden;
 }
 
 .service-block {
