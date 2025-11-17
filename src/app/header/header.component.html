@@ -1,13 +1,14 @@
 <header class="site-header">
   <div class="container header-inner">
     <!-- Brand Logo -->
-  <div class="brand">
-  <img 
-    [src]="(themeService.isDarkMode$ | async) ? './assets/darkTheme.png' : './assets/logo.png'" 
-    alt="Indowest United" 
-    class="brand-logo-img" 
-  />
-</div>
+    <div class="brand">
+      <img 
+        [src]="(themeService.isDarkMode$ | async) ? './assets/darkTheme.png' : './assets/logo.png'" 
+        alt="Indowest United" 
+        class="brand-logo-img" 
+      />
+    </div>
+    
     <!-- Hamburger icon (visible only on mobile/tablet) -->
     <button
       class="navbar-toggler d-lg-none"
@@ -24,31 +25,40 @@
       [class.show]="menuOpen"
       aria-label="Main navigation"
     >
-        <a 
+      <a 
         routerLink="/home"
         routerLinkActive="active-route"
         class="nav-link"
         [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
       >Home</a>
-       <a 
+      
+      <a 
         routerLink="/about"
         routerLinkActive="active-route"
         class="nav-link"
+        (click)="closeMenu()"
       >About</a>
+      
       <a 
         routerLink="/services"
         routerLinkActive="active-route"
         class="nav-link"
+        (click)="closeMenu()"
       >Services</a>
-        <a 
+      
+      <a 
         routerLink="/how-we-work"
         routerLinkActive="active-route"
         class="nav-link"
+        (click)="closeMenu()"
       >How We Work</a>
-    <a 
+      
+      <a 
         routerLink="/contact"
         routerLinkActive="active-route"
         class="nav-link"
+        (click)="closeMenu()"
       >Contact</a>
     </nav>
 
@@ -57,8 +67,7 @@
       <button class="theme-toggle" (click)="toggleTheme()">
         {{ (themeService.isDarkMode$ | async) ? '☀️' : '🌙' }}
       </button>
-      <a class="btn primary" href="contact">Get in Touch</a>
+      <a class="btn primary" href="contact" (click)="closeMenu()">Get in Touch</a>
     </div>
   </div>
 </header>
-
