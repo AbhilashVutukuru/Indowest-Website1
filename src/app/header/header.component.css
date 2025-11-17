@@ -219,3 +219,10 @@
   color: #0a9bf2;
    border-bottom: 4px solid #38bdf8;
 }
+.nav-link {
+  outline: none;
+}
+.nav-link:focus {
+  outline: none;
+  box-shadow: none;
+}
