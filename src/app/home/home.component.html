@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
+<link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body data-theme="light">
   <main>
@@ -87,31 +87,32 @@
 
       </div>
 
-      <div class="stats-wrap">
-        <div class="stat-card animate-on-scroll">
-          <div class="stat-icon blue">🎯</div>
-          <div class="stat-content">
-            <div class="stat-number">24+</div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-        </div>
+<div class="stats-wrap">
+  <div class="stat-card">
+    <div class="stat-icon icon-blue">
+      <i class="bx bx-target-lock"></i>
+    </div>
+    <div class="stat-number">24+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
 
-        <div class="stat-card animate-on-scroll">
-          <div class="stat-icon orange">⚡</div>
-          <div class="stat-content">
-            <div class="stat-number">60%</div>
-            <div class="stat-label">Cost Savings</div>
-          </div>
-        </div>
+  <div class="stat-card">
+    <div class="stat-icon icon-orange">
+      <i class="bx bx-bolt-circle"></i>
+    </div>
+    <div class="stat-number">60%</div>
+    <div class="stat-label">Cost Savings</div>
+  </div>
 
-        <div class="stat-card animate-on-scroll">
-          <div class="stat-icon green">⏱</div>
-          <div class="stat-content">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Support</div>
-          </div>
-        </div>
-      </div>
+  <div class="stat-card">
+    <div class="stat-icon icon-green">
+      <i class="bx bx-time-five"></i>
+    </div>
+    <div class="stat-number">24/7</div>
+    <div class="stat-label">Support</div>
+  </div>
+</div>
+
     </section>
 
      <!-- About Us -->
@@ -202,14 +203,14 @@
             </div>
 
             <div class="services-grid">
-                <!-- Custom Software Development -->
+                               <!-- AI Research & Consultancy -->
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Custom Software Development</h3>
-                    <p>Bespoke software, built around your business.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="custom-software-development">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3>AI Research & Consultancy</h3>
+                    <p>Unlock the power of AI with expert guidance.</p>
+                    <a [routerLink]="['/services']" class="service-link" fragment="ai-research">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Azure Cloud Solutions & DevOps -->
@@ -222,14 +223,14 @@
                     <a [routerLink]="['/services']" class="service-link" fragment="azure-cloud">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- AI Research & Consultancy -->
+                   <!-- Custom Software Development -->
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>AI Research & Consultancy</h3>
-                    <p>Unlock the power of AI with expert guidance.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="ai-research">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3>Custom Software Development</h3>
+                    <p>Bespoke software, built around your business.</p>
+                    <a [routerLink]="['/services']" class="service-link" fragment="custom-software-development">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Data Collection & Engineering -->
@@ -284,23 +285,23 @@
                 <div class="technologies-scroll-wrapper">
                     <div class="technologies-row">
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                            <img src="./assets/java.svg" alt="Java">
                             <span>Java</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                            <img src="./assets/python.svg" alt="Python">
                             <span>Python</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                            <img src="./assets/javascript.svg" alt="JavaScript">
                             <span>JavaScript</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                            <img src="./assets/react.svg" alt="React">
                             <span>React</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular">
+                            <img src="./assets/angular.svg" alt="Angular">
                             <span>Angular</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
@@ -308,7 +309,7 @@
                             <span>Node.js</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg" alt="AWS">
+                            <img src="./assets/aws.svg" alt="AWS">
                             <span>AWS</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
@@ -316,7 +317,7 @@
                             <span>Docker</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                            <img src="./assets/mysql.svg" alt="MySQL">
                             <span>MySQL</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
@@ -324,16 +325,16 @@
                             <span>PostgreSQL</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-                            <span>PHP</span>
+                            <img src="./assets/azure.svg" alt="Azure">
+                            <span>Azure</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+                            <img src="./assets/csharp.svg" alt="C#">
                             <span>C#</span>
                         </div>
                         <div class="tech-item animate-on-scroll">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go">
-                            <span>Go</span>
+                            <img src="./assets/salesforce.svg" alt="SalesForce">
+                            <span>Salesforce</span>
                         </div>
                     </div>
                 </div>
@@ -343,40 +344,65 @@
 
 <!-- Testimonials Section -->
 <section class="testimonials-section">
-  <div class="container">
-    <h2 class="section-title">Client Success Story</h2>
-    <!-- <p class="section-subtitle">
-      Discover how our partnership drives innovation and growth
-    </p> -->
+  <div class="section-header">
+    <h2 class="section-title">Testimonials</h2>
+    <p class="section-subtitle">What our clients say about us</p>
+  </div>
 
-    <div class="testimonial-content">
-      <div class="client-photo-wrapper">
-        <img src="/assets/Peter.jpg" alt="Peter Hind" class="client-photo" />
-      </div>
+  <div class="testimonials-row">
 
-      <div class="testimonial-text-wrapper">
-        <div class="quote-mark">
-          <i class="fas fa-quote-left"></i>
+    <!-- Testimonial 1 -->
+    <div class="testimonial-card">
+      <img src="./assets/Peter.jpg" class="client-img" alt="">
+      <div class="testimonial-content">
+        <h3>Peter Hind</h3>
+        <span class="designation">CEO, RDC Aviation, UK</span>
+
+        <div class="rating">
+          ★★★★★
         </div>
-        <p class="testimonial-text">
-          "We have been working with Indowest United for more than 4 years,
-          using them for the development of a variety of projects. The quality
-          of work and dedication of the team has been fantastic, enabling us to
-          try new products and market-test our ideas in a fast and efficient
-          way."
+
+        <p class="message">
+          <span class="quote">“</span>
+          For 10 years, ARCVIK has been a crucial partner in managing our software
+          development and our outsourced team in Hyderabad, India. Their expertise and
+          dedication have significantly enhanced our projects' efficiency and quality.
+          <br><br>
+          Twice, they accompanied us to India to meet our team, showcasing their
+          commitment to fostering strong relationships. ARCVIK consistently delivers
+          exceptional results, making them an indispensable part of our success.
+          <span class="quote end">”</span>
         </p>
-
-        <div class="client-info">
-          <h3 class="client-name">Peter Hind</h3>
-          <p class="client-position">Chief Executive Officer</p>
-          <p class="client-company">
-            RDC - Research & Development Corporation, UK
-          </p>
-        </div>
       </div>
     </div>
+
+    <!-- Testimonial 2 -->
+    <div class="testimonial-card">
+      <img src="./assets/Richard.jpg" class="client-img" alt="">
+      <div class="testimonial-content">
+        <h3>Richard Leigh</h3>
+        <span class="designation">Director, Aircraft Values Pro. UK</span>
+
+        <div class="rating">
+          ★★★★★
+        </div>
+
+        <p class="message">
+          <span class="quote">“</span>
+          ARCVIK has been instrumental in enhancing our existing software projects.
+          On several occasions, they provided us with skilled software developers within
+          just two weeks of our request. These professionals seamlessly managed bug fixes
+          and implemented new features, significantly improving our applications.
+          <br><br>
+          ARCVIK's promptness and the quality of their resources have consistently impressed us.
+          <span class="quote end">”</span>
+        </p>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 
 <!-- Our Team Members -->
@@ -442,7 +468,7 @@
               </div>
               <div class="team-content">
                 <h4 class="team-name">Aman Chand</h4>
-                <p class="team-role">Testing Analyst</p>
+                <p class="team-role"> Lead QA Analyst</p>
                 <div class="team-contact">
                 </div>
               </div>
@@ -462,7 +488,7 @@
               </div>
               <div class="team-content">
                 <h4 class="team-name">Kavya U</h4>
-                <p class="team-role">Data Analyst</p>
+                <p class="team-role">Lead Data Researcher</p>
                 <div class="team-contact">
                 </div>
               </div>

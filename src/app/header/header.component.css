@@ -230,3 +230,9 @@ body.dark-theme .brand-logo-img {
     transform: translateY(0);
   }
 }
+
+/* ACTIVE ROUTE COLORS */
+.nav-link.active-route {
+  color: #38bdf8;
+   border-bottom: 4px solid #38bdf8;
+}

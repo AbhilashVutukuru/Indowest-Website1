@@ -24,11 +24,32 @@
       [class.show]="menuOpen"
       aria-label="Main navigation"
     >
-      <a class="nav-link active" href="home">Home</a>
-      <a class="nav-link" href="about">About</a>
-      <a class="nav-link" href="services">Services</a>
-      <a class="nav-link" href="how-we-work">How We Work</a>
-      <a class="nav-link" href="contact">Contact</a>
+        <a 
+        routerLink="/home"
+        routerLinkActive="active-route"
+        class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a>
+       <a 
+        routerLink="/about"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >About</a>
+      <a 
+        routerLink="/services"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >Services</a>
+        <a 
+        routerLink="/how-we-work"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >How We Work</a>
+    <a 
+        routerLink="/contact"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >Contact</a>
     </nav>
 
     <!-- CTA + Theme Toggle -->

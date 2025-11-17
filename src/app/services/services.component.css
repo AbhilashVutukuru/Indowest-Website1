@@ -1,6 +1,6 @@
 /* Fragment navigation styling */
 .service-block {
-  scroll-margin-top: 80px; /* Adjust this value based on your header height */
+  scroll-margin-top: 100px; /* Adjust this value based on your header height */
 }
 
 /* Header Section */
@@ -46,7 +46,7 @@
 }
 
 .services-content h2 {
-  font-size: 40px;
+  font-size: 55px;
   font-weight: 701;
   color: #01a6f0;
   margin-bottom: 20px;
@@ -54,7 +54,7 @@
 }
 
 .services-content p {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
   color: #111;
   line-height: 1.4;

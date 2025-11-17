@@ -4,9 +4,12 @@ body {
   background: #f8fafc;
   color: #1a1a1a;
 }
+.container{
+  max-width: 1340px;
+}
 
 .contact-section {
-  padding: 35px 8%;
+  padding: 35px 0px;
 }
 
 /* ----- Intro Section ----- */
@@ -258,7 +261,7 @@ body {
 
 /* Maps Section */
 .maps-section {
-  padding: 30px 8%;
+  padding: 30px 0px;
 }
 
 .contact-card, .map-card {

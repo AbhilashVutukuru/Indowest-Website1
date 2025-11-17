@@ -408,14 +408,15 @@
         line-height: 1.4;
     }
     
+    /* FIXED: Keep contact items horizontal and left-aligned */
     .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+        flex-direction: row; /* Keep horizontal layout */
+        text-align: left; /* Keep text left-aligned */
+        gap: 15px; /* Maintain original gap */
     }
     
     .contact-item i {
-        align-self: center;
+        align-self: flex-start; /* Align icons to top left */
     }
 }
 
@@ -437,24 +438,22 @@
         font-size: 0.85rem;
     }
     
+    /* FIXED: Keep contact items horizontal and left-aligned */
     .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+        flex-direction: row; /* Keep horizontal layout */
+        text-align: left; /* Keep text left-aligned */
+        gap: 12px; /* Slightly smaller gap for mobile */
     }
     
     .contact-item i {
-        align-self: center;
+        align-self: flex-start; /* Align icons to top left */
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
     
     .footer-widget-menu a {
         font-size: 0.85rem;
-    }
-    
-    .contact-item i {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
     }
 }
 
@@ -464,6 +463,7 @@
   transform: translateY(40px);
   transition: all 0.8s ease-out;
 }
+
 
 /* When visible */
 .animate-on-scroll.show {
