@@ -166,6 +166,7 @@ ul[class^="ring"] li {
 .fa-microsoft { background: #0078d4; }
 .fa-aws { background: #ff9900; }
 .fa-cloud { background: #0a9bf2; }
+.fa-database { background: #0a9bf2;}
 
 .fa-python { background: #3572a5; }
 .fa-js { background: #f7df1e; color: #000; }
@@ -879,7 +880,7 @@ ul[class^="ring"] li {
 }
 
 .team-name {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #1a1f36;
     margin-bottom: 8px;

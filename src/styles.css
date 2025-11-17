@@ -40,8 +40,8 @@ html {
 
 /* Dark mode active route */
 body.dark-theme .nav-link.active-route {
-  color: #38bdf8;        /* Sky blue */
-  border-bottom: 4px solid #38bdf8;
+  color: #0a9bf2;        /* Sky blue */
+  border-bottom: 4px solid #0a9bf2;
 }
 
 /* Section Titles & Text */
