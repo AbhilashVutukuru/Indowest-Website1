@@ -13,6 +13,13 @@
   color: #111;
 }
 
+
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 15px; /* Reduced from 20px to 15px */
+    width: 100%;
+}
 .badge {
   display: inline-flex;
   align-items: center;
