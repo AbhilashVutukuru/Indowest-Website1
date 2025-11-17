@@ -92,7 +92,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  max-width: 1300px;
+  max-width: 1320px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -444,12 +444,12 @@ font-size: 16px;
   position: relative;
   overflow: hidden;
   margin: 0 -20px;
-  padding: 20px 0;
+  padding: 20px 40px;
 }
 
 .team-scroll-wrapper {
   display: flex;
-  gap: 25px;
+  gap: 15px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 20px;

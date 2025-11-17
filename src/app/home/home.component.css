@@ -1,3 +1,4 @@
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -114,6 +115,7 @@
   justify-content: center;
   min-height: 300px;
   position: relative;
+  padding-left: 100px;
 }
 
 .orbit-wrap {
@@ -251,9 +253,9 @@ ul[class^="ring"] li {
 .stats-wrap {
   display: flex;
   gap: 16px;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 20px;
-  padding-right: 110px;
+  padding-right: 0px;
 }
 
 /* Card */
@@ -463,6 +465,7 @@ ul[class^="ring"] li {
     padding: 100px 0;
     background: #fafbfd;
 }
+
 
 .section-subtitle {
     font-size: 1.1rem;
@@ -769,9 +772,11 @@ ul[class^="ring"] li {
 
 
 /* Our Team Members */
+/* Our Team Members */
 .team-section {
-    padding: 80px 0;
+    padding: 80px 10px; /* Reduced from 80px 20px to 80px 10px */
     background: #fff;
+    margin: 0 auto; /* Center the section */
 }
 
 .section-main-title {
@@ -802,6 +807,7 @@ ul[class^="ring"] li {
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 0 5px; /* Reduced margin between cards */
 }
 
 .team-card:hover {
@@ -870,7 +876,7 @@ ul[class^="ring"] li {
 }
 
 .team-content {
-    padding: 20px;
+    padding: 15px; /* Reduced from 20px to 15px */
     text-align: center;
     flex: 1;
     display: flex;
@@ -925,6 +931,71 @@ ul[class^="ring"] li {
 
 .contact-item:hover i {
     transform: scale(1.1);
+}
+
+/* Container adjustment for reduced padding */
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 15px; /* Reduced from 20px to 15px */
+    width: 100%;
+}
+
+/* Row adjustment for tighter spacing */
+.row.g-4 {
+    --bs-gutter-x: 1rem; /* Reduced gutter space */
+    --bs-gutter-y: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-section {
+        padding: 60px 5px; /* Further reduced on mobile */
+    }
+    
+    .team-card {
+        margin: 0 2px; /* Smaller margin on mobile */
+        height: 350px; /* Slightly reduced height */
+    }
+    
+    .team-image {
+        height: 250px; /* Adjusted image height */
+    }
+    
+    .team-content {
+        padding: 12px; /* Reduced padding on mobile */
+    }
+    
+    .container {
+        padding: 0 10px; /* Reduced container padding on mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    .team-section {
+        padding: 50px 5px; /* Even more compact on small screens */
+    }
+    
+    .team-card {
+        height: 320px; /* Further reduced height */
+        margin: 0 1px; /* Minimal margin */
+    }
+    
+    .team-image {
+        height: 220px; /* Smaller image area */
+    }
+    
+    .team-content {
+        padding: 10px; /* Minimal padding */
+    }
+    
+    .team-name {
+        font-size: 1.1rem; /* Slightly smaller text */
+    }
+    
+    .team-role {
+        font-size: 0.9rem;
+    }
 }
 
 /* Add smooth scrolling to the entire page */
