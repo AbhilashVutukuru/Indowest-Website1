@@ -400,8 +400,8 @@
 
 /* Small Mobiles */
 @media (max-width: 480px) {
-  .work-content h3 { font-size: 20px; }
-  .work-content p, .work-content ul li { font-size: 14px; }
+  .services-content h2 { font-size: 20px; }
+  .services-content p, .work-content ul li { font-size: 14px; }
   .work-image img { height: 230px; }
 
   .process-step {
