@@ -38,8 +38,6 @@ export class HeaderComponent implements OnDestroy {
 
   private handleRouteChange() {
     this.closeMenu();
-    this.forceScrollToTop();
-    this.triggerAnimations();
   }
 
   private forceScrollToTop() {

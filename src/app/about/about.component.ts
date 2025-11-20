@@ -14,7 +14,7 @@ constructor(private route: ActivatedRoute) {}
       if (fragment) {
         this.scrollToFragment(fragment);
       }
-        this.setupScrollAnimations();
+      this.setupScrollAnimations();
     });
   }
 
@@ -26,7 +26,6 @@ constructor(private route: ActivatedRoute) {}
       }
     }, 100);
   }
-
   setupScrollAnimations() {
     const observerOptions = {
       threshold: 0.1,
