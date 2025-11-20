@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent implements OnInit{
+export class AboutComponent implements OnInit, AfterViewInit{
 constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -46,4 +46,21 @@ constructor(private route: ActivatedRoute) {}
       animateElements.forEach(el => observer.observe(el));
     });
   }
+
+  ngAfterViewInit() {
+  const container = document.querySelector('.team-scroll-wrapper') as HTMLElement;
+  const leftBtn = document.querySelector('.left-arrow') as HTMLElement;
+  const rightBtn = document.querySelector('.right-arrow') as HTMLElement;
+
+  const scrollAmount = 435; // Move one card at a time
+
+  rightBtn?.addEventListener('click', () => {
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  leftBtn?.addEventListener('click', () => {
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+}
+
 }
