@@ -7,17 +7,6 @@ body {
   max-width: 100%;
 }
 
-/* 🌞 Light Theme (default) */
-body {
-  background-color: #ffffff;
-  color: #1a1a1a;
-  transition: background-color 0.4s, color 0.4s;
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-
 
 /* 🌙 Dark Theme - EXACT Match to Figma Site */
 body.dark-theme {
@@ -31,13 +20,7 @@ body.dark-theme .site-header {
 }
 
 /* Global Transitions */
-* {
-  transition: background-color 0.3s ease, 
-              color 0.3s ease, 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease,
-              transform 0.3s ease;
-}
+
 
 /* Smooth scrolling */
 html {
@@ -509,19 +492,6 @@ body.dark-theme .feature-tag:hover {
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
-/* Service Images - Dark Theme Adjustments */
-/* body.dark-theme .service-image {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 1px solid #2A2A2A;
-  transition: all 0.3s ease;
-  filter: brightness(0.9);
-}
-
-body.dark-theme .service-image:hover {
-  filter: brightness(1);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  border-color: #3B82F6;
-} */
 
 /* 🌙 Dark Theme - Industries Section */
 body.dark-theme .industries-section {
@@ -1249,9 +1219,9 @@ body.dark-theme .tagline span {
 }
 
 
-.contact-section {
+/* .contact-section {
   padding: 60px 8%;
-}
+} */
 
 
 
