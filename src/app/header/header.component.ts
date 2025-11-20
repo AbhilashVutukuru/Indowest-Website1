@@ -38,6 +38,8 @@ export class HeaderComponent implements OnDestroy {
 
   private handleRouteChange() {
     this.closeMenu();
+    this.forceScrollToTop();
+    this.triggerAnimations();
   }
 
   private forceScrollToTop() {
@@ -58,38 +60,43 @@ export class HeaderComponent implements OnDestroy {
   }
 
   private triggerAnimations() {
-    // Wait for route to load completely
-    setTimeout(() => {
-      this.setupScrollAnimations();
-    }, 600);
-  }
+  // Wait until the new page fully loads
+  setTimeout(() => {
+    this.setupScrollAnimations();
+  }, 250);  // Reduced to 250ms for faster animation startup
+}
 
-  private setupScrollAnimations() {
-    if (typeof document === 'undefined') return;
+private setupScrollAnimations() {
+  if (typeof document === 'undefined') return;
 
+  // Remove previous 'show' classes so animations can run again
+  const animateElements = document.querySelectorAll('.animate-on-scroll');
+  animateElements.forEach(el => el.classList.remove('show'));
+
+  // Delay observer creation so DOM layout stabilizes (prevents flicker/giggling)
+  setTimeout(() => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Add small delay for better visual effect
-          setTimeout(() => {
+          // Smooth, flicker-free animation trigger
+          requestAnimationFrame(() => {
             entry.target.classList.add('show');
-          }, 50);
+          });
         }
       });
     }, observerOptions);
 
-    // Reset and observe all animations
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
-    animateElements.forEach(el => {
-      el.classList.remove('show'); // Reset
-      observer.observe(el);
-    });
-  }
+    // Observe again after resetting
+    animateElements.forEach(el => observer.observe(el));
+
+  }, 80); // Allow DOM to finish layout → removes jitter
+}
+
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
