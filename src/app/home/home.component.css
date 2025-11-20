@@ -977,12 +977,12 @@ ul[class^="ring"] li {
     }
     
     .team-card {
-        height: 320px; /* Further reduced height */
+        height: 390px; /* Further reduced height */
         margin: 0 1px; /* Minimal margin */
     }
     
     .team-image {
-        height: 220px; /* Smaller image area */
+        height: 300px; /* Smaller image area */
     }
     
     .team-content {
