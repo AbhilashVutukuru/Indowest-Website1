@@ -27,7 +27,7 @@
 
 .badge {
   display: inline-block;
-  background: linear-gradient(90deg, #e6f8ff, #effff0);
+  background: #daecf3;
   color: #0f6fbf;
   padding: 8px 14px;
   border-radius: 22px;
@@ -116,6 +116,7 @@
   min-height: 300px;
   position: relative;
   padding-left: 100px;
+  padding-top: 10px;
 }
 
 .orbit-wrap {

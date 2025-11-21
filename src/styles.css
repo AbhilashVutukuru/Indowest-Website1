@@ -20,7 +20,13 @@ body.dark-theme .site-header {
 }
 
 /* Global Transitions */
-
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease,
+              transform 0.3s ease;
+}
 
 /* Smooth scrolling */
 html {
@@ -72,6 +78,8 @@ body.dark-theme .gradient-word {
   background-clip: text;
   color: transparent;
 }
+
+
 
 /* Buttons */
 body.dark-theme .btn.primary.large {
@@ -706,12 +714,12 @@ body.dark-theme .orbit-center__icon {
   color: #FFFFFF;
 }
 
-body.dark-theme .orbit-icon {
+/* body.dark-theme .orbit-icon {
   background: rgba(59, 130, 246, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(59, 130, 246, 0.2);
   color: #60A5FA;
-}
+} */
 
 /* Scroll Animation */
 body.dark-theme .technologies-scroll-wrapper {
