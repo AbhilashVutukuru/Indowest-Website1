@@ -601,6 +601,7 @@ ul[class^="ring"] li {
 .technologies-scroll-wrapper {
     display: flex;
     width: fit-content;
+    padding-top: 10px;
     animation: scroll-single 20s linear infinite;
 }
 
