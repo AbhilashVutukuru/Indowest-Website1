@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './how-we-work.component.css'
 })
 export class HowWeWorkComponent implements OnInit {
+  
 ngOnInit() {
     this.setupScrollAnimations();
   }
