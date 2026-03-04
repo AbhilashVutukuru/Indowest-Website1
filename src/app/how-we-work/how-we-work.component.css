@@ -21,10 +21,10 @@
 .badge .year {
   background: #ffb400;
   color: #111;
-  font-weight: 600;
+  font-weight: 601;
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .badge .tagline {
@@ -377,6 +377,7 @@
 
 /* Mobiles */
 @media (max-width: 768px) {
+  
   .how-we-work { padding: 70px 0; }
 
   .work-content h3 { font-size: 22px; }
