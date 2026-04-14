@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Import your routing module
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +16,7 @@ import { ServicesComponent } from './services/services.component';
 import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,16 @@ import { FooterComponent } from './footer/footer.component';
     ServicesComponent,
     HowWeWorkComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,       // <--- Routing is handled here
     FormsModule,            // <--- Template-driven forms
-    ReactiveFormsModule     // <--- Reactive forms
+    ReactiveFormsModule,    // <--- Reactive forms
+    HttpClientModule        // <--- HTTP client for API calls
   ],
   providers: [],
   bootstrap: [AppComponent]

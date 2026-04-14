@@ -1,0 +1,62 @@
+<div class="chatbot-container">
+  <!-- Floating Chatbot Button -->
+  <!-- <button 
+    class="chatbot-button" 
+    (click)="toggleChat()"
+    title="Chat with Indowest"
+    *ngIf="!isChatOpen"
+  >
+    <i class="fas fa-comments"></i>
+  </button> -->
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" *ngIf="isChatOpen">
+    <!-- Header -->
+    <!-- <div class="chatbot-header">
+      <h3>Indowest Chat Bot</h3>
+      <button class="close-btn" (click)="closeChat()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div> -->
+
+    <!-- Messages -->
+    <!-- <div class="chatbot-messages">
+      <div 
+        *ngFor="let message of messages" 
+        class="message"
+        [ngClass]="message.sender"
+      >
+        <div 
+          class="message-content"
+          [ngClass]="{'loading': message.isLoading}"
+        >
+          <span *ngIf="!message.isLoading">{{ message.text }}</span>
+          <span *ngIf="message.isLoading" class="typing-indicator">
+            <span></span><span></span><span></span>
+          </span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Input Area -->
+    <!-- <div class="chatbot-input-area">
+      <div class="input-container">
+        <textarea
+          [(ngModel)]="userInput"
+          placeholder="Ask me anything about Indowest..."
+          class="chatbot-input"
+          (keydown)="handleKeyPress($event)"
+          rows="2"
+        ></textarea>
+        <button 
+          class="send-btn"
+          (click)="sendMessage()"
+          [disabled]="isWaitingForResponse || !userInput.trim()"
+          title="Send message (Enter)"
+        >
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div> -->
+  </div>
+</div>

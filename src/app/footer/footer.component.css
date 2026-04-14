@@ -74,9 +74,12 @@
     transition: all 0.3s ease;
 }
 
-.toptech-button a:hover {
+.toptech-button :hover {
+    color: linear-gradient(
+      90deg,
+      #00D4FF,
+      #0066FF);
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
 }
 
 /* Footer Widgets - FIXED ALIGNMENT */

@@ -650,7 +650,10 @@ body.dark-theme .toptech-button a {
 }
 
 body.dark-theme .toptech-button a:hover {
-  background: linear-gradient(135deg, #1D4ED8, #4338CA);
+  background: linear-gradient(
+      90deg,
+      #00D4FF,
+      #0066FF);
   transform: translateY(-3px);
 }
 
