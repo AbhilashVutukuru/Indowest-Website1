@@ -699,13 +699,17 @@ ul[class^="ring"] li {
 
 .quote {
   color: #4f8ff7;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 800;
-  margin-right: 5px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  vertical-align: middle;
+  display: inline;
 }
 
 .quote.end {
-  margin-left: 5px;
+  margin-left: 0px;
 }
 
 /* ============================================
