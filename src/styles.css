@@ -7,6 +7,20 @@ body {
   max-width: 100%;
 }
 
+/* Theme variables (light defaults) */
+:root {
+  --page-bg: linear-gradient(180deg, #e9f6ff 0%, #f6fbff 100%);
+  --text-primary: #042029;
+  --text-secondary: #1b4b57;
+  --card-bg: #ffffff;
+  --card-border: rgba(11,38,56,0.06);
+  --accent: #ff7a18;
+  --accent-2: #0b84ff;
+  --muted: #4a6b71;
+  --gray-700: #374151;
+  --app-blue: #0ea4f4;
+}
+
 
 /* 🌙 Dark Theme - EXACT Match to Figma Site */
 body.dark-theme {
@@ -217,6 +231,18 @@ color: white;
 }
 body.dark-theme .team-content{
     background-color: #1E1D1D;
+}
+
+/* Dark theme variable overrides */
+body.dark-theme {
+  --page-bg: linear-gradient(180deg, #0F0F0F 0%, #121212 100%);
+  --text-primary: #eef1f3;
+  --text-secondary: #d1d5db;
+  --card-bg: #151515;
+  --card-border: #2A2A2A;
+  --accent: #ffd24d;
+  --accent-2: #60A5FA;
+  --muted: #bfc6c8;
 }
 
 /* Card Styles */

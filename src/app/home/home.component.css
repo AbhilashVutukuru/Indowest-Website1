@@ -53,6 +53,226 @@ html {
   max-width: 720px;
 }
 
+/* SmartGrader blurb in hero */
+/* .hero-product-blurb { margin-top: 16px; }
+.hero-product-blurb .micro { font-size: 0.85rem; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+.product-name { margin: 0; font-size: 1.2rem; font-weight: 800; color: var(--text-primary); }
+.product-name .tagline { color: var(--accent-2); font-weight: 700; }
+.product-line { margin-top: 8px; color: var(--muted); max-width: 560px; }
+.product-badges { margin-top: 10px; color: var(--accent-2); font-weight: 700; }
+.hero-product-ctas { margin-top: 12px; display:flex; gap:10px; align-items:center }
+.btn.sm { padding: 10px 14px; border-radius: 10px; font-weight: 700; text-decoration: none; cursor: pointer; }
+.btn.primary.sm { background: var(--accent); color: #fff; border: none; }
+.btn.outline.sm { background: transparent; border: 1px solid rgba(15,23,36,0.06); color: var(--text-primary); }
+
+[data-theme="dark"] .product-name { color: var(--text-primary); }
+[data-theme="dark"] .product-line { color: var(--muted); }
+[data-theme="dark"] .btn.outline.sm { border: 1px solid rgba(255,255,255,0.08); color: var(--text-primary); } */
+
+
+/* ==========================================
+   AI SMARTGRADER SHOWCASE
+========================================== */
+
+.smartgrader-showcase {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 720px;
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 20px rgba(11,38,56,0.06);
+}
+
+.showcase-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.showcase-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #01a6f0,
+    #0066ff
+  );
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-icon i {
+  color: white;
+  font-size: 20px;
+}
+
+.showcase-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #eef7ff;
+  color: #0b84ff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.showcase-header h3 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.showcase-header h3 .ai{ color: var(--gray-800); font-weight:800; margin-right: 8px; }
+.showcase-header h3 .smart{ color: var(--app-blue); font-weight:800; }
+
+[data-theme="dark"] .showcase-header h3 .ai,
+body.dark-theme .showcase-header h3 .ai{ color: var(--muted); }
+[data-theme="dark"] .showcase-header h3 .smart,
+body.dark-theme .showcase-header h3 .smart{ color: var(--accent-2); }
+
+.showcase-description {
+  margin: 15px 0 10px;
+  color: #555;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.showcase-stats {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.showcase-stat {
+  flex: 1;
+  text-align: center;
+  background: #f6f7f9;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.showcase-stat span {
+  display: block;
+  color: #0b84ff;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.showcase-stat small {
+  color: #666;
+  font-size: 14px;
+}
+
+.showcase-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 38px;
+  border-radius: 12px;
+  /* border: 1px solid #d8e2ec; */
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+   background: #0b84ff;
+  color:  white;;
+  transition: all .3s ease;
+}
+
+.showcase-btn:hover {
+  background: #0882c4;
+  color: white;
+  border-color: #0b84ff;
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+[data-theme="dark"] .smartgrader-showcase,
+body.dark-theme .smartgrader-showcase,
+html body.dark-theme .smartgrader-showcase,
+:root[data-theme='dark'] .smartgrader-showcase {
+  background: none !important;
+  background-color: #1A1A1A !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+}
+
+[data-theme="dark"] .showcase-header h3 {
+  color: white;
+}
+
+[data-theme="dark"] .showcase-description {
+  color: #d0d7e2;
+}
+
+[data-theme="dark"] .showcase-stat {
+  background: rgba(255,255,255,0.04);
+}
+
+[data-theme="dark"] .showcase-btn {
+  color: white;
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* Stronger component-scoped override for Angular: ensure dark background applies */
+:host-context(body.dark-theme) .smartgrader-showcase {
+  background: #1A1A1A !important;
+  background-color: #1A1A1A !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+}
+
+/* Hover: blue border + subtle lift (match other cards) */
+/* .smartgrader-showcase:hover {
+  border-color: #0b84ff;
+  box-shadow: 0 12px 32px rgba(11,130,255,0.12);
+  transform: translateY(-4px);
+  transition: border-color .15s ease, box-shadow .2s ease, transform .15s ease;
+} */
+
+:host-context(body.dark-theme) .smartgrader-showcase:hover,
+[data-theme="dark"] .smartgrader-showcase:hover,
+body.dark-theme .smartgrader-showcase:hover {
+  border-color: #0b84ff !important;
+  box-shadow: 0 12px 32px rgba(11,130,255,0.12) !important;
+  transform: translateY(-4px);
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+  .smartgrader-showcase {
+    padding: 18px;
+  }
+
+  .showcase-stats {
+    flex-direction: column;
+  }
+
+  .showcase-header h3 {
+    font-size: 24px;
+  }
+
+  .showcase-stat span {
+    font-size: 24px;
+  }
+}
+
+/* Feature end */
+
 .badge {
   display: inline-block;
   background: #daecf3;
@@ -977,3 +1197,5 @@ ul[class^="ring"] li {
   .team-name { font-size: 1.1rem; }
   .team-role { font-size: 0.9rem; }
 }
+
+

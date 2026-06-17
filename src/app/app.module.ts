@@ -17,6 +17,7 @@ import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     ContactComponent,
     FooterComponent,
     ChatbotComponent
+    ,ProductsComponent
   ],
   imports: [
     BrowserModule,
