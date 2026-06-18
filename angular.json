@@ -31,7 +31,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-                  {
+  {
     "glob": "**/*",
     "input": "src/assets",
     "output": "/assets/"
@@ -41,8 +41,12 @@
     "input": "public",
     "output": "/"
   },
-  "src/favicon.ico"
-                ],
+  {
+    "glob": "favicon.png",
+    "input": "src/assets",
+    "output": "/"
+  }
+],
             "styles": [
                "node_modules/bootstrap/dist/css/bootstrap.min.css",
   "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
