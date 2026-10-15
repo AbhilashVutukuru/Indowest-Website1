@@ -15,6 +15,8 @@ export class ThemeService {
   }
 
   private initializeTheme() {
+    // The site design is dark-only, so a previously saved "light" choice no longer applies
+    localStorage.setItem('theme', 'dark');
     const savedTheme = localStorage.getItem('theme');
 
     // 👇 Always dark if no saved theme

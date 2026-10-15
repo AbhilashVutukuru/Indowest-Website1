@@ -1,7 +1,25 @@
+<!-- Ambient background: grid, colour glows and drifting particles -->
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+  <div class="bg-glow g3"></div>
+  <canvas #bgCanvas></canvas>
+  <div class="bg-vignette"></div>
+</div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" aria-hidden="true"><span #progressBar></span></div>
+
+<!-- Cursor ring (mouse devices only) -->
+<div class="cursor-ring" #cursorRing aria-hidden="true"></div>
+
 <app-header></app-header>
 <div id="preloader" *ngIf="isLoading">
   <div class="spinner"></div>
 </div>
-<router-outlet></router-outlet>
+<main class="app-main">
+  <router-outlet></router-outlet>
+</main>
 <app-footer></app-footer>
 <app-chatbot></app-chatbot>

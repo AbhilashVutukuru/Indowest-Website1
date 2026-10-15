@@ -1,250 +1,239 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - Indowest United</title>
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-  <section class="contact-section">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12">
-          <!-- Intro Section -->
-          <div class="contact-intro text-center">
-            <div class="badge animate-on-scroll">
-              <span class="year">EST. 2015</span>
-              <span class="tagline">Over a decade of excellence</span>
-            </div>
-            <h4 class="animate-on-scroll">Contact</h4>
-            <h1 class="animate-on-scroll">Let's Discuss Your <span>Next Project</span></h1>
-            <p class="animate-on-scroll">
-              Ready to scale your development capacity or start a new project? We'd love to collaborate and turn your vision into reality
-              with our <span class="highlight">India-based excellence.</span>
-            </p>
-          </div>
+<div class="iw-page">
+  <div class="iw-wrap">
+
+    <!-- Page header -->
+    <div class="iw-pagehead">
+      <div class="iw-pill"><span class="est">EST. 2015</span><span>Over a decade of excellence</span></div>
+      <span class="iw-eyebrow">Contact</span>
+      <h1 class="iw-h1">Let's Discuss Your <span class="iw-grad">Next AI Project</span></h1>
+      <p class="iw-lead">
+        Exploring AI agents, planning a generative AI pilot or looking to scale your engineering capacity?
+        Tell us what you have in mind and we'll help you find the right place to start.
+      </p>
+    </div>
+
+    <!-- Form + direct channels -->
+    <div class="iw-split stretch contact-top">
+      <!-- Left Form -->
+      <div class="contact-form iw-glow animate-on-scroll">
+        <div class="form-header">
+          <div class="form-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <h2>Send us a message</h2>
         </div>
+        <p class="form-hint">Tell us about the process or idea you'd like to explore with AI.</p>
+
+        <!-- Success/Error Message -->
+        <div *ngIf="message" class="form-alert" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'">
+          {{ message }}
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input id="firstName" type="text" formControlName="firstName" placeholder="John"
+                     [class.is-invalid]="firstName?.invalid && firstName?.touched" />
+              <div *ngIf="firstName?.invalid && firstName?.touched" class="field-error">
+                <div *ngIf="firstName?.errors?.['required']">First name is required</div>
+                <div *ngIf="firstName?.errors?.['pattern']">Please enter a valid first name (min 2 characters)</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" type="text" formControlName="lastName" placeholder="Doe"
+                     [class.is-invalid]="lastName?.invalid && lastName?.touched" />
+              <div *ngIf="lastName?.invalid && lastName?.touched" class="field-error">
+                <div *ngIf="lastName?.errors?.['required']">Last name is required</div>
+                <div *ngIf="lastName?.errors?.['pattern']">Please enter a valid last name (min 2 characters)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" placeholder="example@email.com"
+                   [class.is-invalid]="email?.invalid && email?.touched" />
+            <div *ngIf="email?.invalid && email?.touched" class="field-error">
+              <div *ngIf="email?.errors?.['required']">Email is required</div>
+              <div *ngIf="email?.errors?.['email']">Please enter a valid email address</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" formControlName="message"
+                      placeholder="Tell us about the process or idea you'd like to explore with AI..."
+                      [class.is-invalid]="messageField?.invalid && messageField?.touched"></textarea>
+            <div *ngIf="messageField?.invalid && messageField?.touched" class="field-error">
+              <div *ngIf="messageField?.errors?.['required']">Message is required</div>
+              <div *ngIf="messageField?.errors?.['minlength']">Message must be at least 10 characters long</div>
+            </div>
+          </div>
+
+          <button type="submit" class="iw-btn primary block" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Sending...' : 'Send Message' }} <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
       </div>
 
-      <!-- Main Contact Layout - Side by side on laptop/desktop -->
-      <div class="row justify-content-center">
-        <!-- Left Form -->
-        <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-          <div class="contact-form animate-on-scroll">
-            <div class="form-header">
-              <div class="icon"><i class="fa-solid fa-paper-plane"></i></div>
-              <h3>Send us a message</h3>
+      <!-- Right Info -->
+      <div class="contact-side">
+        <div class="talk-card iw-glass animate-on-scroll">
+          <div class="talk-title"><i class="fas fa-comments"></i><h3>Let's talk</h3></div>
+          <p>
+            Whether you have a specific AI use case in mind or just want to explore what is possible,
+            we're here to help. Reach out through any of the channels below.
+          </p>
+
+          <div class="channels">
+            <div class="channel">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <span>EMAIL US</span>
+                <a href="mailto:info@indowestunited.com">info&#64;indowestunited.com</a>
+              </div>
             </div>
-
-            <!-- Success/Error Message -->
-            <div *ngIf="message" class="alert" [class.alert-success]="messageType === 'success'" [class.alert-danger]="messageType === 'error'">
-              {{ message }}
+            <div class="channel">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <span>CALL US</span>
+                <a href="tel:+917901666696">+91 7901666696</a>
+              </div>
             </div>
-
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-              <div class="row">
-                <div class="col-12 col-sm-6">
-                  <div class="form-group animate-on-scroll">
-                    <label>First Name</label>
-                    <input 
-                      type="text" 
-                      formControlName="firstName"
-                      placeholder="John"
-                      [class.is-invalid]="firstName?.invalid && firstName?.touched" />
-                    <div *ngIf="firstName?.invalid && firstName?.touched" class="invalid-feedback">
-                      <div *ngIf="firstName?.errors?.['required']">First name is required</div>
-                      <div *ngIf="firstName?.errors?.['pattern']">Please enter a valid first name (min 2 characters)</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <div class="form-group animate-on-scroll">
-                    <label>Last Name</label>
-                    <input 
-                      type="text" 
-                      formControlName="lastName"
-                      placeholder="Doe"
-                      [class.is-invalid]="lastName?.invalid && lastName?.touched" />
-                    <div *ngIf="lastName?.invalid && lastName?.touched" class="invalid-feedback">
-                      <div *ngIf="lastName?.errors?.['required']">Last name is required</div>
-                      <div *ngIf="lastName?.errors?.['pattern']">Please enter a valid last name (min 2 characters)</div>
-                    </div>
-                  </div>
-                </div>
+            <div class="channel">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <span>VISIT US</span>
+                <b>Hyderabad, India</b>
               </div>
-
-              <div class="form-group animate-on-scroll">
-                <label>Email</label>
-                <input 
-                  type="email" 
-                  formControlName="email"
-                  placeholder="example@email.com"
-                  [class.is-invalid]="email?.invalid && email?.touched" />
-                <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback">
-                  <div *ngIf="email?.errors?.['required']">Email is required</div>
-                  <div *ngIf="email?.errors?.['email']">Please enter a valid email address</div>
-                </div>
-              </div>
-
-              <div class="form-group animate-on-scroll">
-                <label>Message</label>
-                <textarea 
-                  rows="4" 
-                  formControlName="message"
-                  placeholder="Write your message..."
-                  [class.is-invalid]="messageField?.invalid && messageField?.touched"></textarea>
-                <div *ngIf="messageField?.invalid && messageField?.touched" class="invalid-feedback">
-                  <div *ngIf="messageField?.errors?.['required']">Message is required</div>
-                  <div *ngIf="messageField?.errors?.['minlength']">Message must be at least 10 characters long</div>
-                </div>
-              </div>
-
-              <button 
-                type="submit" 
-                class="submit-btn animate-on-scroll"
-                [disabled]="isSubmitting">
-                {{ isSubmitting ? 'Sending...' : 'Send Message' }}
-              </button>
-            </form>
+            </div>
           </div>
         </div>
 
-        <!-- Right Info -->
-        <div class="col-12 col-lg-6">
-          <div class="contact-info animate-on-scroll">
-            <div class="info-header">
-              <div class="icon orange"><i class="fa-solid fa-globe"></i></div>
-              <h3>Let's talk</h3>
-            </div>
-            <p>
-              Whether you have a specific project in mind or just want to explore possibilities, 
-              we're here to help. Reach out through any of the channels below.
-            </p>
-
-            <div class="info-cards">
-              <div class="row g-3">
-                <!-- First Row: Email Us and Call Us -->
-                <div class="col-12 col-sm-6">
-                  <div class="card blue animate-on-scroll">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>
-                      <h4>Email Us</h4>
-                      <p>info&#64;indowestunited.com</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <div class="card orange animate-on-scroll">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                      <h4>Call Us</h4>
-                      <p>+91 7901666696</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Second Row: Visit Us (full width) -->
-                <div class="col-12">
-                  <div class="card green animate-on-scroll">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                      <h4>Visit Us</h4>
-                      <p>Hyderabad, India</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Business Hours -->
+        <div class="hours-card iw-glass animate-on-scroll">
+          <div class="hours-title"><i class="fas fa-clock"></i> LET'S TALK BUSINESS</div>
+          <p>We're available Monday to Friday, 9 AM to 6 PM (IST). Or simply send us a message — we'll respond within 24 hours.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Maps Section -->
-  <section class="maps-section">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-          <div class="contact-card animate-on-scroll">
-            <div class="card-header">
-              <div class="icon-box">IN</div>
-              <div>
-                <h2>India</h2>
-                <p>Hyderabad</p>
-              </div>
-            </div>
-
-            <div class="info">
-              <p class="animate-on-scroll"><i class="fas fa-map-marker-alt"></i> Flat No 402, Veekay Prime Apartments, Patrika Nagar,<br>Hitech City, Hyderabad – 500081</p>
-              <p class="animate-on-scroll"><i class="fas fa-phone"></i> +91 7901666696</p>
-              <p class="animate-on-scroll"><i class="fas fa-envelope"></i> info&#64;indowestunited.com</p>
-            </div>
-            
-            <!-- UK Partner Office Section -->
-            <div class="uk-office">
-              <h3 class="animate-on-scroll">UK Partner Office</h3>
-              <div class="info">
-                <p class="animate-on-scroll"><i class="fas fa-map-marker-alt"></i> ARCVIK Solutions Ltd<br>Nottingham, United Kingdom</p>
-                <p class="animate-on-scroll"><i class="fas fa-envelope"></i> info&#64;arcvik.co.uk</p>
-              </div>
-            </div>
-            
-            <!-- Business Hours Section -->
-            <div class="business-hours">
-              <h4 class="animate-on-scroll">Let's Talk Business</h4>
-              <p class="animate-on-scroll">We're available Monday to Friday, 9 AM to 6 PM (IST). Or simply send us a message — we'll respond within 24 hours.</p>
-            </div>
-
-            <a href="https://www.google.com/maps/place/VeeKay+Prime,+Patrika+Nagar,+Hitech+City,+Hyderabad,+Telangana+500081/"
-              target="_blank"
-              class="blue-btn animate-on-scroll">
-              <i class="fas fa-map"></i> View on Google Maps
-            </a>
+    <!-- Offices -->
+    <div class="iw-grid cols-2 offices">
+      <div class="iw-card animate-on-scroll">
+        <div class="grow">
+          <div class="office-top"><span class="iw-tag">IN · India HQ</span><span>Hyderabad</span></div>
+          <p>Flat No 402, Veekay Prime Apartments, Patrika Nagar, Hitech City, Hyderabad – 500081</p>
+          <div class="office-lines">
+            <div>Phone: <b>+91 7901666696</b></div>
+            <div>Email: <b>info&#64;indowestunited.com</b></div>
           </div>
         </div>
+        <div class="foot">
+          <a [href]="hyderabadMapUrl" target="_blank" rel="noopener" class="iw-link">View on Google Maps <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
 
-        <div class="col-12 col-lg-6">
-          <div class="map-card animate-on-scroll">
-            <div class="card-header">
-              <div class="icon-box green">📍</div>
-              <div>
-                <h2>Find Us</h2>
-                <p>Get Directions</p>
-              </div>
-            </div>
-
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.4192641917333!2d78.37897977495852!3d17.44559638345265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93f26370fdff%3A0x4c5b1385d3cbd7a9!2sVeeKay%20Prime!5e0!3m2!1sen!2sin!4v1730799600000!5m2!1sen!2sin" 
-              width="100%" height="250" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy">
-            </iframe>
-
-            <div class="btn-row">
-              <div class="row g-2">
-                <div class="col-6">
-                  <a href="https://www.google.com/maps/dir/?api=1&destination=VeeKay+Prime,+Patrika+Nagar,+Hitech+City,+Hyderabad,+Telangana+500081"
-                    target="_blank"
-                    class="blue-btn w-100 text-center animate-on-scroll">
-                    <i class="fas fa-directions"></i> Get Directions
-                  </a>
-                </div>
-                <div class="col-6">
-                  <a href="https://www.google.com/maps/place/VeeKay+Prime,+Patrika+Nagar,+Hitech+City,+Hyderabad,+Telangana+500081/"
-                    target="_blank"
-                    class="green-btn w-100 text-center animate-on-scroll">
-                    <i class="fas fa-map"></i> View in Maps
-                  </a>
-                </div>
-              </div>
-            </div>
+      <!-- UK Partner Office Section -->
+      <div class="iw-card animate-on-scroll">
+        <div class="grow">
+          <div class="office-top"><span class="iw-tag partner">UK · Partner Office</span><span>Nottingham</span></div>
+          <h3>ARCVIK Solutions Ltd</h3>
+          <p>Nottingham, United Kingdom</p>
+          <div class="office-lines">
+            <div>Email: <b>info&#64;arcvik.co.uk</b></div>
           </div>
+        </div>
+        <div class="foot">
+          <a [href]="nottinghamMapUrl" target="_blank" rel="noopener" class="iw-link partner">View on Google Maps <i class="fas fa-arrow-up-right-from-square"></i></a>
         </div>
       </div>
     </div>
-  </section>
-  
-</body>
-</html>
+
+    <!-- Location map -->
+    <div class="map-panel iw-glow animate-on-scroll">
+      <div class="map-head">
+        <div>
+          <div class="map-kicker"><i class="fas fa-globe"></i> GLOBAL PRESENCE · UK &amp; INDIA</div>
+          <h3>Find Us</h3>
+        </div>
+        <div class="map-tabs" role="tablist">
+          <button type="button" [class.active]="activePin === 'hyderabad'" (click)="activePin = 'hyderabad'">Hyderabad (HQ)</button>
+          <button type="button" [class.active]="activePin === 'nottingham'" (click)="activePin = 'nottingham'">Nottingham (UK)</button>
+        </div>
+      </div>
+
+      <div class="map-stage">
+        <div class="iw-gridbg"></div>
+
+        <svg viewBox="320 60 400 300" preserveAspectRatio="xMidYMid meet" role="img"
+             aria-label="Map showing the link between the Nottingham partner office and the Hyderabad headquarters">
+          <defs>
+            <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffb400" />
+              <stop offset="50%" stop-color="#4cc3ff" />
+              <stop offset="100%" stop-color="#01a6f0" />
+            </linearGradient>
+          </defs>
+
+          <!-- schematic landmasses -->
+          <path d="M 390 120 Q 420 100 450 110 T 480 140 T 450 180 T 400 170 Z" fill="rgba(51, 65, 85, 0.4)" stroke="rgba(100, 116, 139, 0.3)" />
+          <path d="M 370 115 Q 380 105 385 118 T 375 135 Z" fill="rgba(255, 180, 0, 0.25)" stroke="rgba(255, 180, 0, 0.55)" stroke-width="1.5" />
+          <path d="M 500 140 Q 560 120 620 130 T 670 190 T 610 240 T 570 280 T 540 220 Z" fill="rgba(51, 65, 85, 0.4)" stroke="rgba(100, 116, 139, 0.3)" />
+          <path d="M 550 200 L 590 200 L 575 260 Z" fill="rgba(1, 166, 240, 0.3)" stroke="rgba(76, 195, 255, 0.55)" stroke-width="1.5" />
+          <path d="M 410 190 Q 460 210 470 270 T 450 340 T 400 280 Z" fill="rgba(51, 65, 85, 0.25)" stroke="rgba(100, 116, 139, 0.2)" />
+
+          <!-- link between the two offices -->
+          <path class="map-beam" d="M 380 120 Q 460 110 575 230" fill="transparent" stroke="url(#beamGradient)" stroke-width="2.5" stroke-dasharray="6 4" />
+
+          <g class="map-pin" [class.active]="activePin === 'nottingham'" (click)="activePin = 'nottingham'">
+            <circle cx="380" cy="120" r="16" fill="rgba(255, 180, 0, 0.15)" />
+            <circle cx="380" cy="120" r="8" fill="rgba(255, 180, 0, 0.4)" />
+            <circle cx="380" cy="120" r="4" fill="#ffb400" />
+            <text x="380" y="96" fill="#e2e8f0" font-size="12" text-anchor="middle" font-weight="bold">Nottingham (UK)</text>
+          </g>
+
+          <g class="map-pin" [class.active]="activePin === 'hyderabad'" (click)="activePin = 'hyderabad'">
+            <circle class="map-ping" cx="575" cy="230" r="22" fill="rgba(1, 166, 240, 0.2)" />
+            <circle cx="575" cy="230" r="10" fill="rgba(1, 166, 240, 0.4)" />
+            <circle cx="575" cy="230" r="5" fill="#4cc3ff" />
+            <text x="575" y="262" fill="#4cc3ff" font-size="13" text-anchor="middle" font-weight="bold">Hyderabad (HQ)</text>
+          </g>
+        </svg>
+
+        <div class="map-badge iw-glass" [ngSwitch]="activePin">
+          <ng-container *ngSwitchCase="'hyderabad'">
+            <div class="map-badge-top">
+              <b><i class="fas fa-location-dot"></i> IndoWest United HQ · India</b>
+              <span class="iw-tag">EST. 2015</span>
+            </div>
+            <p>Flat No 402, Veekay Prime Apartments, Patrika Nagar, Hitech City, Hyderabad – 500081</p>
+            <div class="map-badge-line">Phone: <b>+91 7901666696</b></div>
+          </ng-container>
+          <ng-container *ngSwitchCase="'nottingham'">
+            <div class="map-badge-top">
+              <b><i class="fas fa-location-dot partner"></i> ARCVIK Solutions Ltd · UK</b>
+              <span class="iw-tag partner">UK Partner</span>
+            </div>
+            <p>Nottingham, United Kingdom</p>
+            <div class="map-badge-line">Email: <b>info&#64;arcvik.co.uk</b></div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="map-foot">
+        <span>Response time: <b>within 24 hours</b></span>
+        <div class="map-actions">
+          <a class="iw-btn primary sm" target="_blank" rel="noopener"
+             [href]="activePin === 'hyderabad' ? hyderabadDirectionsUrl : nottinghamDirectionsUrl">
+            <i class="fas fa-diamond-turn-right"></i> Get Directions
+          </a>
+          <a class="iw-btn ghost sm" target="_blank" rel="noopener"
+             [href]="activePin === 'hyderabad' ? hyderabadMapUrl : nottinghamMapUrl">
+            <i class="fas fa-map"></i> View in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

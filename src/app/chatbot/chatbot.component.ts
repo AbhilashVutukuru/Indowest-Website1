@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { OpenAiService } from './openai.service';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChatKnowledgeService, ChatLink } from './chat-knowledge.service';
 
 export interface Message {
   id: number;
@@ -7,6 +7,7 @@ export interface Message {
   sender: 'user' | 'bot';
   timestamp: Date;
   isLoading?: boolean;
+  link?: ChatLink;
 }
 
 @Component({
@@ -14,42 +15,25 @@ export interface Message {
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css']
 })
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit, OnDestroy {
+
+  @ViewChild('messageList') messageList?: ElementRef<HTMLElement>;
+  @ViewChild('inputBox') inputBox?: ElementRef<HTMLTextAreaElement>;
 
   isChatOpen = false;
   messages: Message[] = [];
+  suggestions: string[] = [];
   userInput = '';
   messageCounter = 0;
   isWaitingForResponse = false;
-  apiKeyNotSet = false;
 
-  constructor(private openAiService: OpenAiService) { }
+  private replyTimer: any;
+
+  constructor(private knowledge: ChatKnowledgeService) { }
 
   ngOnInit(): void {
-    // Set your OpenAI API key here
-    const apiKey = 'AIzaSyD7ern8qEkq_Y_GjgtGrovoEpz0qzWIX1A';
-    
-    if (apiKey) {
-      this.openAiService.setApiKey(apiKey);
-      this.apiKeyNotSet = false;
-      this.addBotMessage('Hello! 👋 Welcome to Indowest United. How can I help you today?');
-    } else {
-      this.apiKeyNotSet = true;
-      this.addBotMessage('⚠️ API key not configured. Contact admin.');
-    }
-  }
-
-  /**
-   * Set API key manually
-   */
-  setApiKey(key: string): void {
-    if (key.trim()) {
-      this.openAiService.setApiKey(key);
-      localStorage.setItem('OPENAI_API_KEY', key);
-      this.apiKeyNotSet = false;
-      this.messages = [];
-      this.addBotMessage('Hello! 👋 Welcome to Indowest United. How can I help you today?');
-    }
+    this.addBotMessage('Hi! 👋 I\'m the IndoWest assistant. Ask me about our AI services, AI agents, AI SmartGrader, how we work or how to reach us.');
+    this.suggestions = this.knowledge.starterQuestions;
   }
 
   /**
@@ -57,6 +41,10 @@ export class ChatbotComponent implements OnInit {
    */
   toggleChat(): void {
     this.isChatOpen = !this.isChatOpen;
+    if (this.isChatOpen) {
+      this.scrollToBottom();
+      setTimeout(() => this.inputBox?.nativeElement.focus(), 150);
+    }
   }
 
   /**
@@ -66,73 +54,39 @@ export class ChatbotComponent implements OnInit {
     this.isChatOpen = false;
   }
 
+  /** Send a suggestion chip as if the visitor had typed it. */
+  ask(question: string): void {
+    this.userInput = question;
+    this.sendMessage();
+  }
+
   /**
    * Send user message
    */
   sendMessage(): void {
-    if (!this.userInput.trim() || this.isWaitingForResponse) {
+    const question = this.userInput.trim();
+    if (!question || this.isWaitingForResponse) {
       return;
     }
 
-    if (this.apiKeyNotSet) {
-      this.addBotMessage('Please configure your OpenAI API key first.');
-      return;
-    }
-
-    // Add user message
-    this.addUserMessage(this.userInput);
-    const userQuestion = this.userInput;
+    this.addUserMessage(question);
     this.userInput = '';
+    this.suggestions = [];
 
-    // Add loading message
+    // short "typing" pause so the reply doesn't appear instantly
     this.isWaitingForResponse = true;
-    this.addBotMessage('', true); // Loading message
+    this.addBotMessage('', true);
 
-    // Call OpenAI API
-    this.openAiService.sendMessage(userQuestion).subscribe({
-      next: (response) => {
-        this.isWaitingForResponse = false;
-        
-        // Remove loading message
-        if (this.messages.length > 0 && this.messages[this.messages.length - 1].isLoading) {
-          this.messages.pop();
-        }
+    this.replyTimer = setTimeout(() => {
+      const reply = this.knowledge.answer(question);
 
-        // Add bot response
-        if (response.choices && response.choices.length > 0) {
-          const botResponse = response.choices[0].message.content;
-          this.addBotMessage(botResponse);
-        } else {
-          this.addBotMessage('Sorry, I couldn\'t generate a response. Please try again.');
-        }
-
-        this.scrollToBottom();
-      },
-      error: (error) => {
-        this.isWaitingForResponse = false;
-        
-        // Remove loading message
-        if (this.messages.length > 0 && this.messages[this.messages.length - 1].isLoading) {
-          this.messages.pop();
-        }
-
-        console.error('OpenAI Error:', error);
-        
-        let errorMessage = 'An error occurred. ';
-        if (error.status === 401) {
-          errorMessage += 'Invalid API key. Please check your OpenAI API key.';
-        } else if (error.status === 429) {
-          errorMessage += 'Rate limited. Please try again later.';
-        } else if (error.status === 500) {
-          errorMessage += 'OpenAI service error. Please try again later.';
-        } else {
-          errorMessage += 'Please try again.';
-        }
-        
-        this.addBotMessage(errorMessage);
-        this.scrollToBottom();
+      if (this.messages.length > 0 && this.messages[this.messages.length - 1].isLoading) {
+        this.messages.pop();
       }
-    });
+      this.addBotMessage(reply.text, false, reply.link);
+      this.suggestions = reply.suggestions;
+      this.isWaitingForResponse = false;
+    }, 650);
   }
 
   /**
@@ -151,13 +105,14 @@ export class ChatbotComponent implements OnInit {
   /**
    * Add bot message to chat
    */
-  private addBotMessage(text: string = '', isLoading: boolean = false): void {
+  private addBotMessage(text: string = '', isLoading: boolean = false, link?: ChatLink): void {
     this.messages.push({
       id: this.messageCounter++,
       text: text,
       sender: 'bot',
       timestamp: new Date(),
-      isLoading: isLoading
+      isLoading: isLoading,
+      link: link
     });
     this.scrollToBottom();
   }
@@ -167,11 +122,11 @@ export class ChatbotComponent implements OnInit {
    */
   private scrollToBottom(): void {
     setTimeout(() => {
-      const chatBox = document.querySelector('.chatbot-messages');
+      const chatBox = this.messageList?.nativeElement;
       if (chatBox) {
         chatBox.scrollTop = chatBox.scrollHeight;
       }
-    }, 100);
+    }, 50);
   }
 
   /**
@@ -182,5 +137,9 @@ export class ChatbotComponent implements OnInit {
       event.preventDefault();
       this.sendMessage();
     }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.replyTimer);
   }
 }

@@ -1,527 +1,533 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Indowest United - Software Excellence</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet" />
-</head>
-<body data-theme="light">
-  <main>
- 
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-left">
-          <span class="badge animate-on-scroll">INDIA BASED</span>
-          <h1 class="hero-title animate-on-scroll">
-            Building Digital Solutions.
-            <span class="gradient-word">Powering Global Success.</span>
+<div class="home">
+
+  <!-- Section dots (large screens) -->
+  <nav class="section-dots" aria-label="Page sections">
+    <button *ngFor="let s of sections" type="button" [class.active]="activeSection === s.id"
+            (click)="scrollToSection(s.id)" [attr.aria-label]="'Scroll to ' + s.label">
+      <span class="dot-label">{{ s.label }}</span>
+      <span class="dot"></span>
+    </button>
+  </nav>
+
+  <!-- ========================================================
+       1. HERO
+       ======================================================== -->
+  <section id="hero" class="hero">
+    <div class="iw-wrap">
+      <div class="iw-pill">
+        <span class="iw-dot"></span>
+        <span>AI ENGINEERING · INDIA BASED · GLOBAL SCALE</span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 class="iw-h1">
+            AI Agents That Deliver.
+            <span class="hero-line">Built for <span class="iw-grad hero-word">{{ cyclingWords[wordIndex] }}.</span></span>
           </h1>
-<p class="hero-sub animate-on-scroll">
-        Your trusted offshore software development partner, delivering quality,
-        reliability, and innovation for businesses across the world.
-      </p>
 
-      <p class="hero-sub animate-on-scroll">
-        At <b>IndoWest United</b>, we transform ideas into scalable digital solutions. In partnership with UK-based <b>ARCVIK Solutions Ltd</b>, we offer software development, AI automation, and data engineering — combining technical excellence with cost-efficient delivery.
-      </p>
+          <p class="iw-lead">
+            We build AI agents and intelligent software that take repetitive work off your team.
+          </p>
+          <p class="hero-intro">
+            We partner with UK-based <b>ARCVIK Solutions Ltd</b> to deliver production-ready
+            AI solutions and modern software engineering — combining innovation, technical expertise, and cost-effective delivery for businesses worldwide.
+          </p>
 
+          <div class="hero-tags">
+            <ng-container *ngFor="let tag of heroTags; let last = last">
+              <span>{{ tag }}</span><span class="sep" *ngIf="!last" aria-hidden="true">·</span>
+            </ng-container>
+          </div>
 
-      <!-- <ul class="hero-sub" style="margin-top: 10px; line-height: 1.8;">
-        <li>💻 <strong>Full-stack Development Expertise</strong> – .NET, Python, Angular, React, SQL Server, Azure</li>
-        <li>🌍 <strong>Trusted Global Collaboration</strong> – In partnership with ARCVIK (UK)</li>
-        <li>🤖 <strong>AI & Automation Solutions</strong> – Intelligent systems that simplify operations</li>
-        <li>👨‍💻 <strong>Scalable Offshore Teams</strong> – Dedicated developers, QA engineers, and data researchers</li>
-        <li>✅ <strong>Quality, Transparency & Accountability</strong> – Every project, every time</li>
-      </ul> -->
+          <!-- Product callout -->
+          <!-- <div class="hero-product iw-glass">
+            <div class="hero-product-info">
+              <div class="hero-product-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div>
+                <div class="hero-product-title">Our Product: AI SmartGrader</div>
+                <p>Upload answer sheets and let AI handle evaluation, scoring and insights.</p>
+              </div>
+            </div>
+            <a href="https://www.ai-smartgrader.com/contact" target="_blank" rel="noopener" class="iw-btn soft sm">
+              Try AI SmartGrader <i class="fas fa-arrow-right"></i>
+            </a>
+          </div> -->
 
-     <div class="smartgrader-showcase animate-on-scroll">
-
-  <div class="showcase-header">
-    <div class="showcase-icon">
-      <i class="fas fa-graduation-cap"></i>
-    </div>
-
-    <div>
-      <span class="showcase-badge">Our Product</span>
-        <h3><span class="ai">AI</span> <span class="smart">SmartGrader</span></h3>
-    </div>
-  </div>
-
-  <p class="showcase-description">
-    Upload answer sheets and let AI handle evaluation,
-    scoring, feedback generation and insights automatically.
-  </p>
-
-  <!-- <div class="showcase-stats">
-
-    <div class="showcase-stat">
-      <span>10×</span>
-      <small>Faster grading</small>
-    </div>
-
-    <div class="showcase-stat">
-      <span>90%</span>
-      <small>Accuracy rate</small>
-    </div>
-
-    <div class="showcase-stat">
-      <span>80%</span>
-      <small>Time saved</small>
-    </div>
-
-  </div> -->
-
-  <a
-    href="https://www.ai-smartgrader.com/contact"
-    target="_blank"
-    class="showcase-btn">
-    Try AI SmartGrader →
-  </a>
-
-</div>
-
-      <!-- Let's Build Great Together Text -->
-      <h3 class="build-together-text animate-on-scroll" style="margin-top: 30px; margin-bottom: 20px; font-size: 24px; font-weight: 600; color: #01a6f0 !important; ">
-        Let's Build Something Great Together
-      </h3>
-      
-
-      <!-- Get in Touch Button -->
-      <div class="hero-ctas animate-on-scroll" style="margin-top: 10px;">
-        <a href="contact" class="btn primary large">Get in Touch ➜</a>
-      </div>
-      
-            <!-- AI SmartGrader Blurb -->
-      <!-- <div class="hero-product-blurb animate-on-scroll">
-        <div class="micro">Featured Product</div>
-        <h3 class="product-name">AI SmartGrader — <span class="tagline">Grade smarter, teach better.</span></h3>
-        <p class="product-line">Automates rubric-aligned scoring and delivers actionable, instructor-reviewable feedback — saving hours on grading.</p>
-        <div class="product-badges">Fast · Fair · Insightful</div>
-        <div class="hero-product-ctas">
-          <a class="btn primary sm" href="https://www.ai-smartgrader.com/auth/login" target="_blank" rel="noopener noreferrer">Try SmartGrader</a>
-          <a class="btn outline sm" routerLink="/products">Learn more</a>
+          <div class="iw-actions hero-actions">
+            <a routerLink="/contact" class="iw-btn primary">Book an AI Discovery Call <i class="fas fa-arrow-right"></i></a>
+            <a routerLink="/services" class="iw-btn ghost">Explore All Services <i class="fas fa-arrow-up-right-from-square"></i></a>
+          </div>
         </div>
-      </div> -->
-    </div>
 
+        <!-- Living orb with the six agent types in orbit -->
+        <div class="hero-orb" #orbBox>
+          <div class="orb-glow a" aria-hidden="true"></div>
+          <div class="orb-glow b" aria-hidden="true"></div>
+          <canvas #orbCanvas aria-hidden="true"></canvas>
 
-        <div class="orbit animate-on-scroll">
-  <ul class="orbit-wrap">
-    <li class="orbit-center">
-      <i class="orbit-center__icon fas fa-code"></i>
-    </li>
-
-    <li>
-      <ul class="ring-0">
-        <li><i class="orbit-icon fab fa-microsoft"></i></li>
-        <li><i class="orbit-icon fab fa-aws"></i></li>
-        <li><i class="orbit-icon fas fa-cloud"></i></li>
-        <li><i class="orbit-icon fas fa-database"></i></li>
-      </ul>
-    </li>
-
-    <li>
-      <ul class="ring-1">
-        <li><i class="orbit-icon fab fa-python"></i></li>
-        <li><i class="orbit-icon fab fa-js"></i></li>
-        <li><i class="orbit-icon fab fa-java"></i></li>
-      </ul>
-    </li>
-
-    <li>
-      <ul class="ring-2">
-        <li><i class="orbit-icon fab fa-react"></i></li>
-        <li><i class="orbit-icon fab fa-angular"></i></li>
-        <li><i class="orbit-icon fab fa-node-js"></i></li>
-        <li><i class="orbit-icon fab fa-php"></i></li>
-        <li><i class="orbit-icon fab fa-html5"></i></li>
-        <li><i class="orbit-icon fab fa-css3"></i></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-      </div>
-
-<div class="stats-wrap">
-  <div class="stat-card">
-    <div class="stat-icon icon-blue">
-      <i class="bx bx-target-lock"></i>
-    </div>
-    <div class="stat-number">10+</div>
-    <div class="stat-label">Years Experience</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-icon icon-orange">
-      <i class="bx bx-bolt-circle"></i>
-    </div>
-    <div class="stat-number">60%</div>
-    <div class="stat-label">Cost Savings</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-icon icon-green">
-      <i class="bx bx-time-five"></i>
-    </div>
-    <div class="stat-number">24/7</div>
-    <div class="stat-label">Support</div>
-  </div>
-</div>
-
-
-
-    </section>
-
-     <!-- About Us -->
-  <section class="about-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title animate-on-scroll">About Us</h2>
-          <p class="section-subtitle animate-on-scroll"><b>IndoWest United</b> is a leading software development company based in India, working in close partnership with <b>ARCVIK Solutions Ltd (UK)</b>. Together, we deliver innovative, cost-efficient, and high-quality technology solutions for businesses worldwide.</p>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
-            <div class="about-card animate-on-scroll">
-              <div class="icon-container">
-                <div class="icon icon-yellow">
-                  <i class="fa-solid fa-lightbulb"></i>
-                </div>
-              </div>
-              <h3>Our Story</h3>
-              <p>
-                <b>IndoWest United</b> was founded 10 years ago in India, and is led by a dedicated software development expert with 25 years of proven, hands-on development expertise.
-              </p>
-              <div class="readmore">
-                <a a [routerLink]="['/about']" fragment="our-story">Read more →</a>
-              </div>
-            </div>
+          <div class="orb-nodes">
+            <button *ngFor="let agent of agents" #orbNode type="button" class="orb-node"
+                    [class.active]="activeAgent === agent" (click)="activeAgent = agent">
+              <span class="orb-node-icon"><i class="fas" [ngClass]="agent.icon"></i></span>
+              <span class="orb-node-text">
+                <b>{{ agent.title }}</b>
+                <small>{{ agent.tools[0] }}</small>
+              </span>
+              <span class="orb-node-dot"></span>
+            </button>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="about-card animate-on-scroll">
-              <div class="icon-container">
-                <div class="icon icon-orange">
-                  <i class="fa-solid fa-rocket"></i>
-                </div>
-              </div>
-              <h3>Our Mission</h3>
-              <p>
-                To deliver intelligent, AI-driven and cost-effective software solutions through UK-led expertise—with the option to scale through our trusted development teams in India.
-              </p>
-              <div class="readmore">
-                <a a [routerLink]="['/about']" fragment="our-mission">Read more →</a>
-              </div>
+
+          <div class="orb-hud iw-glass">
+            <div class="orb-hud-top">
+              <span><em>Active agent:</em> <b>{{ activeAgent.title }}</b></span>
+              <span class="orb-hud-count">6 AGENT TYPES</span>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="about-card animate-on-scroll">
-              <div class="icon-container">
-                <div class="icon icon-green">
-                  <i class="fa-solid fa-eye"></i>
-                </div>
+            <p>{{ activeAgent.description }}</p>
+            <div class="orb-hud-foot">
+              <div class="iw-chips">
+                <span class="iw-chip" *ngFor="let tool of activeAgent.tools">{{ tool }}</span>
               </div>
-              <h3>Our Vision</h3>
-              <p>
-                To be the most trusted global software partner for businesses seeking long-term value, technical excellence, and flexible global delivery.
-              </p>
-              <div class="readmore">
-                <a a [routerLink]="['/about']" fragment="our-vision">Read more →</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="about-card animate-on-scroll">
-              <div class="icon-container">
-                <div class="icon icon-blue">
-                  <i class="fa-solid fa-gem"></i>
-                </div>
-              </div>
-              <h3>Our Values</h3>
-              <p>
-                Integrity, Innovation, Transparency, Collaboration and Excellence.
-              </p>
-              <div class="readmore">
-                <a a [routerLink]="['/about']" fragment="our-values">Read more →</a>
-              </div>
+              <button type="button" class="iw-link" (click)="scrollToSection('agents')">
+                Explore <i class="fas fa-arrow-up-right-from-square"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-     <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-on-scroll">Services We Provide</h2>
-                <p class="section-subtitle animate-on-scroll">
-                    <b>Indowest United</b> offers an array of services to support your IT goals as you analyze, plan, and implement your strategies.
-                    Our broad range of technology services offers solutions from small to large projects and short to long-term durations.
-                </p>
-            </div>
-
-            <div class="services-grid">
-                               <!-- AI Research & Consultancy -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI Automation & Consultancy</h3>
-                    <p>Unlock the power of AI with expert guidance.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="ai-research">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Azure Cloud Solutions & DevOps -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Azure Cloud Solutions & DevOps</h3>
-                    <p>Accelerate your cloud journey with confidence.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="azure-cloud">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                   <!-- Custom Software Development -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Custom Software Development</h3>
-                    <p>Bespoke software, built around your business.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="custom-software-development">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Data Collection & Engineering -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Data Collection & Engineering</h3>
-                    <p>Turn raw data into real value.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="data-collection">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Quality Assurance & Testing -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Quality Assurance & Testing</h3>
-                    <p>Manual and automated testing.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="quality-assurance">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Dedicated Outsourced Teams -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Dedicated Outsourced Teams</h3>
-                    <p>Extend your team, without extending overhead.</p>
-                    <a [routerLink]="['/services']" class="service-link" fragment="outsourced-development">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+      <!-- Metrics strip -->
+      <div class="hero-stats">
+        <div class="hero-stat iw-glass" *ngFor="let s of stats">
+          <div class="hero-stat-value">
+            <ng-container *ngIf="s.text; else counted">{{ s.text }}</ng-container>
+            <ng-template #counted>
+              <span [attr.data-count]="s.count" [attr.data-suffix]="s.suffix">{{ s.count }}{{ s.suffix }}</span>
+            </ng-template>
+          </div>
+          <div>
+            <div class="hero-stat-label">{{ s.label }}</div>
+            <div class="hero-stat-detail">{{ s.detail }}</div>
+          </div>
         </div>
-    </section>
-
-       <!-- How we work -->
-
-
-  <!-- Technologies Section -->
-<section class="technologies-section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title animate-on-scroll">Technologies</h2>
-            <p class="section-subtitle animate-on-scroll">
-                We identify business needs & offer consulting services that cover the complete 
-                lifecycle of the software from inception to its deployment using various domain 
-                expertise from different technologies.
-            </p>
-        </div>
-
-        <div class="technologies-container">
-            <div class="technologies-scroll-wrapper">
-
-                <!-- ROW 1 -->
-                <div class="technologies-row">
-                    <div class="tech-item"><img src="./assets/java.svg"><span>Java</span></div>
-                    <div class="tech-item"><img src="./assets/python.svg"><span>Python</span></div>
-                    <div class="tech-item"><img src="./assets/javascript.svg"><span>JavaScript</span></div>
-                    <div class="tech-item"><img src="./assets/react.svg"><span>React</span></div>
-                    <div class="tech-item"><img src="./assets/angular.svg"><span>Angular</span></div>
-                    <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"><span>Node.js</span></div>
-                    <div class="tech-item"><img src="./assets/aws.svg"><span>AWS</span></div>
-                    <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"><span>Docker</span></div>
-                    <div class="tech-item"><img src="./assets/mysql.svg"><span>MySQL</span></div>
-                    <div class="tech-item"><img src="./assets/azure.svg"><span>Azure</span></div>
-                    <div class="tech-item"><img src="./assets/csharp.svg"><span>C#</span></div>
-                    <div class="tech-item"><img src="./assets/salesforce.svg"><span>Salesforce</span></div>
-                    <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"><span>PostgreSQL</span></div>
-                </div>
-
-            </div>
-        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-
-<!-- Testimonials Section -->
-<section class="testimonials-section">
-  <div class="section-header">
-    <h2 class="section-title">Testimonials</h2>
-    <p class="section-subtitle">What our clients say about us</p>
-  </div>
-
-  <div class="testimonials-row">
-
-    <!-- Testimonial 1 -->
-    <div class="testimonial-card">
-      <img src="./assets/Peter.jpg" class="client-img" alt="">
-      <div class="testimonial-content">
-        <h3>Peter Hind</h3>
-        <span class="designation">CEO, RDC Aviation, UK</span>
-
-        <div class="rating">
-          ★★★★★
-        </div>
-
-        <p class="message">
-          <span class="quote">“</span>
-         We have been working with Indowest United for more than 9 years,
-          using them for the development of a variety of projects. 
-          The quality of work and dedication of the team has been fantastic, 
-          enabling us to try new products and market-test our ideas in a fast and efficient way.
-          <br><br>
-          Indowest United consistently delivers
-          exceptional results, making them an indispensable part of our success.
-          <span class="quote end">”</span>
+  <!-- ========================================================
+       2. ABOUT US
+       ======================================================== -->
+  <section id="about-us" class="iw-section">
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <span class="iw-eyebrow animate-on-scroll">// 01 · About Us</span>
+        <h2 class="iw-h2 animate-on-scroll">About <span class="iw-grad">Us</span></h2>
+        <p class="iw-sub animate-on-scroll">
+          <b>IndoWest United</b> is a leading software development company based in India, working in close
+          partnership with <b>ARCVIK Solutions Ltd (UK)</b>. Together, we deliver innovative, cost-efficient,
+          and high-quality technology solutions for businesses worldwide.
         </p>
       </div>
-    </div>
 
-    <!-- Testimonial 2 -->
-    <div class="testimonial-card">
-      <img src="./assets/Richard.jpg" class="client-img" alt="">
-      <div class="testimonial-content">
-        <h3>Richard Leigh</h3>
-        <span class="designation">Director, Aircraft Values Pro. UK</span>
-
-        <div class="rating">
-          ★★★★★
+      <div class="iw-grid cols-4">
+        <div class="iw-card animate-on-scroll">
+          <div class="grow">
+            <span class="iw-label">FOUNDATION</span>
+            <h3>Our Story</h3>
+            <p><b>IndoWest United</b> was founded 10 years ago in India, and is led by a dedicated software development expert with 25 years of proven, hands-on development expertise.</p>
+          </div>
+          <a [routerLink]="['/about']" fragment="our-story" class="iw-link about-more">Read more <i class="fas fa-chevron-right"></i></a>
         </div>
 
-        <p class="message">
-          <span class="quote">“</span>
-          Indowest has provided us with skilled software developers within
-          just two weeks of our request. These professionals seamlessly managed bug fixes
-          and implemented new features, significantly improving our applications.
-          <br><br>
-          <!-- Indowest and the quality of their resources have consistently impressed us. -->
-           Indowest has consistently impressed us with the quality of its talent and delivery.
-          <span class="quote end">”</span>
+        <div class="iw-card animate-on-scroll">
+          <div class="grow">
+            <span class="iw-label">PURPOSE</span>
+            <h3>Our Mission</h3>
+            <p>To deliver intelligent, AI-driven and cost-effective software solutions through UK-led expertise—with the option to scale through our trusted development teams in India.</p>
+          </div>
+          <a [routerLink]="['/about']" fragment="our-mission" class="iw-link about-more">Read more <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="iw-card animate-on-scroll">
+          <div class="grow">
+            <span class="iw-label">FUTURE</span>
+            <h3>Our Vision</h3>
+            <p>To be the most trusted global software partner for businesses seeking long-term value, technical excellence, and flexible global delivery.</p>
+          </div>
+          <a [routerLink]="['/about']" fragment="our-vision" class="iw-link about-more">Read more <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="iw-card animate-on-scroll">
+          <div class="grow">
+            <span class="iw-label">STANDARDS</span>
+            <h3>Our Values</h3>
+            <p>Integrity, Innovation, Transparency, Collaboration and Excellence.</p>
+          </div>
+          <a [routerLink]="['/about']" fragment="our-values" class="iw-link about-more">Read more <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engineering stack strip -->
+  <!-- <section class="stack-strip">
+    <div class="stack-strip-label">ENGINEERING STACK &amp; PLATFORM ECOSYSTEM</div>
+    <div class="iw-marquee">
+      <div class="iw-marquee-track">
+        <div class="iw-marquee-item" *ngFor="let item of stackStrip">{{ item }}</div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ========================================================
+       3. AI AGENTS
+       ======================================================== -->
+  <section id="agents" class="iw-section alt">
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <span class="iw-eyebrow animate-on-scroll">Autonomous Workforce</span>
+        <h2 class="iw-h2 animate-on-scroll">Digital Colleagues That Get Real Work Done</h2>
+        <p class="iw-sub animate-on-scroll">
+          AI agents don't just answer questions — they plan, act across your systems and finish the job.
+          Here is what we can build for you.
         </p>
       </div>
-    </div>
 
-  </div>
-</section>
-
-
-
-<!-- Our Team Members -->
-  <section class="team-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title animate-on-scroll">Meet Our Dedicated Members</h2>
-          <p class="section-subtitle animate-on-scroll">Get in touch with our expert team for any queries</p>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
-            <div class="team-card animate-on-scroll">
-              <div class="team-image">
-                <img src="./assets/Ashok.jpg" alt="Ashok Kumar - Centre Head">
-                <div class="team-overlay">
-                  <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ashokkumar-r-278a10355/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="team-content">
-                <h4 class="team-name">Ashok Rajamahendravarapu</h4>
-                <p class="team-role">Centre Head</p>
-                <div class="team-contact">
-                
-                </div>
-              </div>
-            </div>
+      <div class="iw-grid cols-3">
+        <div class="iw-card animate-on-scroll" *ngFor="let agent of agents">
+          <div class="grow">
+            <div class="iw-icon"><i class="fas" [ngClass]="agent.icon"></i></div>
+            <h3>{{ agent.title }}</h3>
+            <p>{{ agent.description }}</p>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="team-card animate-on-scroll">
-              <div class="team-image">
-                <img src="/assets/Venkat.jpg" alt="Venkat Mandla - Lead Developer">
-                <div class="team-overlay">
-                  <div class="social-links">
-                    <a href="https://www.linkedin.com/in/venkat-mandla-609696139/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="team-content">
-                <h4 class="team-name">Venkat Mandla</h4>
-                <p class="team-role">Lead Developer</p>
-                <div class="team-contact">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="team-card animate-on-scroll">
-              <div class="team-image">
-                <img src="/assets/Aman.jpg" alt="Aman Chand - Testing Analyst">
-                <div class="team-overlay">
-                  <div class="social-links">
-                    <a href="https://www.linkedin.com/in/aman-kattepogu-4a6bb7391/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="team-content">
-                <h4 class="team-name">Aman Kattepogu</h4>
-                <p class="team-role"> Lead QA Analyst</p>
-                <div class="team-contact">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="team-card animate-on-scroll">
-              <div class="team-image">
-                <img src="/assets/Kavya.jpg" alt="Kavya U - Data Analyst">
-                <div class="team-overlay">
-                  <div class="social-links">
-                    <a href="https://www.linkedin.com/in/kavya-uppalapati-801323399/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <!-- <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a> -->
-                  </div>
-                </div>
-              </div>
-              <div class="team-content">
-                <h4 class="team-name">Kavya Uppalapati</h4>
-                <p class="team-role">Lead Data Researcher</p>
-                <div class="team-contact">
-                </div>
-              </div>
+          <div class="foot">
+            <span class="card-caption">Works with:</span>
+            <div class="iw-chips">
+              <span class="iw-chip" *ngFor="let tool of agent.tools">{{ tool }}</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
-</body>
-<script>
-    
-</script>
-</html>
+  <!-- ========================================================
+       4. HOW AN AGENT WORKS
+       ======================================================== -->
+  <section id="how-an-agent-works" class="iw-section workflow">
+    <div class="workflow-glow a" aria-hidden="true"></div>
+    <div class="workflow-glow b" aria-hidden="true"></div>
+
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <div>
+          <div class="iw-pill"><span class="iw-dot"></span><span>// 02 · HOW IT WORKS</span></div>
+          <h2 class="iw-h2 workflow-title">How an <span class="iw-grad">Agent Works</span></h2>
+          <p class="iw-sub">Five steps turn a business goal into a finished, checked result.</p>
+        </div>
+
+        <div class="workflow-controls">
+          <button type="button" class="wf-btn" (click)="toggleAutoPlay()"
+                  [attr.title]="autoPlay ? 'Pause auto-cycle' : 'Resume auto-cycle'">
+            <i class="fas" [class.fa-pause]="autoPlay" [class.fa-play]="!autoPlay"></i>
+            <span>{{ autoPlay ? 'Auto-Cycle' : 'Manual' }}</span>
+          </button>
+          <button type="button" class="wf-btn icon" (click)="goToStep(activeStep - 1)" aria-label="Previous step">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button type="button" class="wf-btn icon" (click)="goToStep(activeStep + 1)" aria-label="Next step">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="workflow-stage">
+        <!-- Step list -->
+        <div class="wf-steps">
+          <button type="button" class="wf-step" *ngFor="let step of steps; let i = index"
+                  [class.active]="activeStep === i" [class.past]="activeStep > i" (click)="goToStep(i)">
+            <span class="wf-step-top">
+              <span class="wf-num">0{{ i + 1 }}</span>
+              <span class="wf-name">{{ step.name }}</span>
+              <span class="wf-running" *ngIf="activeStep === i">RUNNING</span>
+              <i class="fas fa-circle-check wf-done" *ngIf="activeStep > i"></i>
+            </span>
+            <span class="wf-label">{{ step.label }}</span>
+          </button>
+        </div>
+
+        <!-- Live view of the selected step -->
+        <div class="wf-screen iw-glow">
+          <div class="iw-gridbg"></div>
+
+          <div class="wf-screen-head">
+            <span class="wf-stage-name"><span class="iw-dot"></span> STAGE 0{{ activeStep + 1 }} — {{ steps[activeStep].name | uppercase }}</span>
+            <span class="wf-badge">{{ steps[activeStep].badge }}</span>
+          </div>
+
+          <div class="wf-screen-body" [ngSwitch]="activeStep">
+            <div class="wf-view" *ngSwitchCase="0">
+              <div class="wf-emblem"><i class="fas fa-brain"></i></div>
+              <h4>Understands the request</h4>
+              <div class="iw-term">
+                <div><span class="c-brand">&gt; REQUEST:</span> "Review the supplier invoice and update the payment schedule"</div>
+                <div class="c-green">✓ Found: supplier, amount, due date</div>
+                <div class="c-muted">✓ Loaded: ERP records and policy rules</div>
+              </div>
+            </div>
+
+            <div class="wf-view" *ngSwitchCase="1">
+              <div class="wf-emblem orange"><i class="fas fa-diagram-project"></i></div>
+              <h4>Plans the work</h4>
+              <div class="wf-plan">
+                <div><b>Step 1</b><span>Read the invoice</span></div>
+                <div><b>Step 2</b><span>Match the purchase order</span></div>
+                <div><b>Step 3</b><span>Update the schedule</span></div>
+              </div>
+            </div>
+
+            <div class="wf-view" *ngSwitchCase="2">
+              <div class="wf-emblem green"><i class="fas fa-play"></i></div>
+              <h4>Acts through your systems</h4>
+              <div class="iw-term">
+                <div class="c-green">&gt; ERP: reconcile invoice with purchase order</div>
+                <div>✓ All line items matched</div>
+                <div class="c-brand">✓ Payment schedule drafted</div>
+              </div>
+            </div>
+
+            <div class="wf-view" *ngSwitchCase="3">
+              <div class="wf-emblem yellow"><i class="fas fa-user-shield"></i></div>
+              <h4>Checks with a human</h4>
+              <div class="iw-term">
+                <div class="c-yellow">Amount is above the approval limit</div>
+                <div>Human sign-off required before anything is paid.</div>
+                <div class="wf-approval"><span class="iw-dot"></span> Approval requested from the finance lead</div>
+              </div>
+            </div>
+
+            <div class="wf-view" *ngSwitchCase="4">
+              <div class="wf-emblem"><i class="fas fa-microchip"></i></div>
+              <h4>Logs and improves</h4>
+              <div class="iw-term">
+                <div class="c-brand">&gt; Run saved to the audit log</div>
+                <div class="c-muted">Time, cost and outcome recorded</div>
+                <div class="c-green">✓ Added to the evaluation set for future checks</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wf-screen-foot">
+            <span><b>OUTCOME:</b> {{ steps[activeStep].detail }}</span>
+            <span class="wf-count">Step {{ activeStep + 1 }} of 5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. AI SERVICES
+       ======================================================== -->
+  <section id="services-preview" class="iw-section">
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <div>
+          <span class="iw-eyebrow animate-on-scroll">End-to-End Capabilities</span>
+          <h2 class="iw-h2 animate-on-scroll">AI Services We Provide</h2>
+          <p class="iw-sub animate-on-scroll">From the first pilot to AI running in production — everything you need, from one team.</p>
+        </div>
+        <a routerLink="/services" class="iw-btn soft sm">View all 8 services <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="iw-grid cols-3">
+        <div class="iw-card animate-on-scroll" *ngFor="let service of services">
+          <div class="grow">
+            <span class="iw-tag">{{ service.category }}</span>
+            <h3 class="service-title">{{ service.title }}</h3>
+            <p>{{ service.line }}</p>
+          </div>
+          <div class="foot service-foot">
+            <span class="card-caption">{{ service.tag }}</span>
+            <a [routerLink]="['/services']" [fragment]="service.fragment" class="iw-link">Learn more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. RESPONSIBLE AI
+       ======================================================== -->
+  <!-- <section class="iw-section alt">
+    <div class="iw-wrap">
+      <div class="iw-head">
+        <span class="iw-eyebrow animate-on-scroll">// 03 · Responsible AI by Design</span>
+        <h2 class="iw-h2 animate-on-scroll">AI Your Compliance Team Can Say Yes To</h2>
+        <p class="iw-sub animate-on-scroll">Data protection, human oversight and auditability are built into every AI system we deliver — from day one.</p>
+      </div>
+
+      <div class="iw-grid cols-4">
+        <div class="iw-card animate-on-scroll" *ngFor="let item of responsibleAI">
+          <div class="trust-title"><i class="fas fa-shield-halved"></i><h3>{{ item.title }}</h3></div>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ========================================================
+       7. AI STACK & TECHNOLOGIES
+       ======================================================== -->
+  <section class="iw-section">
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <span class="iw-eyebrow animate-on-scroll">Tech Matrix</span>
+        <h2 class="iw-h2 animate-on-scroll">AI Stack &amp; Technologies</h2>
+        <p class="iw-sub animate-on-scroll">Model-agnostic by design — we choose the stack that fits your security, data and cost needs.</p>
+      </div>
+    </div>
+
+    <div class="stack-rows">
+      <div class="iw-marquee">
+        <div class="iw-marquee-track">
+          <div class="iw-marquee-item" *ngFor="let item of stackRowOne">{{ item }}</div>
+        </div>
+      </div>
+      <div class="iw-marquee">
+        <div class="iw-marquee-track reverse">
+          <div class="iw-marquee-item" *ngFor="let item of stackRowTwo">{{ item }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. TESTIMONIALS
+       ======================================================== -->
+  <section class="iw-section alt">
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <span class="iw-eyebrow">Proven Results</span>
+        <h2 class="iw-h2">What Our Clients Say</h2>
+      </div>
+
+      <div class="testimonials">
+        <!-- Testimonial 1 -->
+        <figure class="testimonial iw-glow">
+          <div>
+            <i class="fas fa-quote-left testimonial-quote"></i>
+            <blockquote>
+              "We have been working with Indowest United for more than 9 years, using them for the development
+              of a variety of projects. The quality of work and dedication of the team has been fantastic,
+              enabling us to try new products and market-test our ideas in a fast and efficient way.
+              Indowest United consistently delivers exceptional results, making them an indispensable part of our success."
+            </blockquote>
+          </div>
+          <figcaption>
+            <img src="./assets/Peter.jpg" alt="Peter Hind">
+            <div>
+              <b>Peter Hind</b>
+              <span>CEO, RDC Aviation</span>
+            </div>
+            <div class="testimonial-meta">
+              <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <span>United Kingdom</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- Testimonial 2 -->
+        <figure class="testimonial iw-glow">
+          <div>
+            <i class="fas fa-quote-left testimonial-quote"></i>
+            <blockquote>
+              "Indowest has provided us with skilled software developers within just two weeks of our request.
+              These professionals seamlessly managed bug fixes and implemented new features, significantly
+              improving our applications. Indowest has consistently impressed us with the quality of its
+              talent and delivery."
+            </blockquote>
+          </div>
+          <figcaption>
+            <img src="./assets/Richard.jpg" alt="Richard Leigh">
+            <div>
+              <b>Richard Leigh</b>
+              <span>Director, Aircraft Values Pro</span>
+            </div>
+            <div class="testimonial-meta">
+              <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <span>United Kingdom</span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. TEAM
+       ======================================================== -->
+  <section class="iw-section">
+    <div class="iw-wrap">
+      <div class="iw-head center">
+        <span class="iw-eyebrow animate-on-scroll">The Talent Behind the Code</span>
+        <h2 class="iw-h2 animate-on-scroll">Meet Our Dedicated Members</h2>
+        <p class="iw-sub animate-on-scroll">Get in touch with our expert team for any queries</p>
+      </div>
+
+      <div class="iw-grid cols-4">
+        <div class="team-card iw-glass animate-on-scroll">
+          <div class="team-photo">
+            <img src="./assets/Ashok.jpg" alt="Ashok Rajamahendravarapu - Centre Head">
+            <a href="https://www.linkedin.com/in/ashokkumar-r-278a10355/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Ashok on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <h3>Ashok Rajamahendravarapu</h3>
+          <p>Centre Head</p>
+        </div>
+
+        <div class="team-card iw-glass animate-on-scroll">
+          <div class="team-photo">
+            <img src="./assets/Venkat.jpg" alt="Venkat Mandla - Lead Developer">
+            <a href="https://www.linkedin.com/in/venkat-mandla-609696139/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Venkat on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <h3>Venkat Mandla</h3>
+          <p>Lead Developer</p>
+        </div>
+
+        <div class="team-card iw-glass animate-on-scroll">
+          <div class="team-photo">
+            <img src="./assets/Aman.jpg" alt="Aman Kattepogu - Lead QA Analyst">
+            <a href="https://www.linkedin.com/in/aman-kattepogu-4a6bb7391/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Aman on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <h3>Aman Kattepogu</h3>
+          <p>Lead QA Analyst</p>
+        </div>
+
+        <div class="team-card iw-glass animate-on-scroll">
+          <div class="team-photo">
+            <img src="./assets/Kavya.jpg" alt="Kavya Uppalapati - Lead Data Researcher">
+            <a href="https://www.linkedin.com/in/kavya-uppalapati-801323399/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Kavya on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <h3>Kavya Uppalapati</h3>
+          <p>Lead Data Researcher</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. FINAL CTA
+       ======================================================== -->
+  <section class="iw-section final-cta">
+    <div class="iw-wrap">
+      <div class="iw-cta iw-glow animate-on-scroll">
+        <h2 class="iw-h2">Let's Put AI to Work in Your Business</h2>
+        <p>Book a short discovery call and we will show you the AI use cases worth building first.</p>
+        <div class="iw-actions center">
+          <a routerLink="/contact" class="iw-btn primary">Book an AI Discovery Call <i class="fas fa-arrow-right"></i></a>
+          <a routerLink="/business-models" class="iw-btn ghost">Explore Business Models <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

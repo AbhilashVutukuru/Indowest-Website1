@@ -10,7 +10,13 @@ import { ThemeService } from '../../theme.service';
 })
 export class HeaderComponent implements OnDestroy {
   menuOpen = false;
+  scrolled = false;
   private routerSubscription: Subscription;
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 30;
+  }
 
   constructor(
     public themeService: ThemeService,

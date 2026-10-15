@@ -1,116 +1,89 @@
-<footer class="footer-area style-one">
-  <div class="container">
-    <div class="row footer-main-row">
+<footer class="site-footer">
+  <div class="footer-glow" aria-hidden="true"></div>
+
+  <div class="iw-wrap">
+    <div class="footer-grid">
       <!-- Company Info -->
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-logo animate-on-scroll">
-            <img 
-          [src]="(themeService.isDarkMode$ | async) ? './assets/darkTheme.png' : './assets/logo.png'" 
-          alt="Indowest United" />
-        </div>
-        <div class="footer-widget-desc animate-on-scroll">
-          <p>10+ years of software excellence. India-based, globally scalable solutions.</p>
-        </div>
-        <div class="toptech-button inner-style animate-on-scroll">
-          <a routerLink="/contact">Get in touch <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="footer-brand">
+        <a routerLink="/home" class="footer-logo">
+          <img src="./assets/darkTheme.png" alt="Indowest United" />
+        </a>
+        <p>AI agents, generative AI and software engineering. 10+ years of excellence — India-based, globally scalable solutions.</p>
+        <a routerLink="/contact" class="iw-btn primary sm">Get in touch <i class="fas fa-arrow-right"></i></a>
       </div>
 
       <!-- Services -->
-      <div class="col-lg-3 col-md-6">
-        <div class="footer-widget-content">
-          <div class="footer-widget-title animate-on-scroll">
-            <h4>Services</h4>
-          </div>
-          <div class="footer-widget-menu">
-            <ul>
-               <li><a [routerLink]="['/services']" fragment="custom-software-development">Custom Software Development</a></li>
-               <li><a [routerLink]="['/services']" fragment="azure-cloud">Azure Cloud & DevOps</a></li>
-                <li><a [routerLink]="['/services']" fragment="ai-research">AI Research & Consultancy</a></li>
-                <li><a [routerLink]="['/services']" fragment="data-collection">Data Collection & Engineering</a></li>
-                <li><a [routerLink]="['/services']" fragment="quality-assurance">Quality Assurance & Testing</a></li>
-                <li><a [routerLink]="['/services']" fragment="outsourced-development">Outsourced Teams</a></li>
-            </ul>
-          </div>
-        </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a [routerLink]="['/services']" fragment="ai-agents">AI Agents & Automation</a></li>
+          <li><a [routerLink]="['/services']" fragment="generative-ai">Generative AI & LLM Apps</a></li>
+          <li><a [routerLink]="['/services']" fragment="ai-consulting">AI Consulting & Responsible AI</a></li>
+          <li><a [routerLink]="['/services']" fragment="data-collection">Data Engineering for AI</a></li>
+          <li><a [routerLink]="['/services']" fragment="custom-software-development">AI-Powered Software Development</a></li>
+          <li><a [routerLink]="['/services']" fragment="azure-cloud">Cloud, MLOps & LLMOps</a></li>
+          <li><a [routerLink]="['/services']" fragment="quality-assurance">QA & AI Testing</a></li>
+          <li><a [routerLink]="['/services']" fragment="outsourced-development">Dedicated AI Teams</a></li>
+        </ul>
       </div>
 
       <!-- Company Links -->
-    <div class="col-lg-2 col-md-6">
-        <div class="footer-widget-content">
-          <div class="footer-widget-title animate-on-scroll">
-            <h4>Company</h4>
-          </div>
-          <div class="footer-widget-menu">
-            <ul>
-              <li class="animate-on-scroll"><a routerLink="/about"> About Us</a></li>
-              <li class="animate-on-scroll"><a routerLink="/business-models"> Business Models</a></li>
-              <li class="animate-on-scroll"><a routerLink="/contact"> Contact</a></li>
-            </ul>
-          </div>
-        </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a routerLink="/about">About Us</a></li>
+          <li><a routerLink="/business-models">Business Models</a></li>
+          <li><a routerLink="/products">AI SmartGrader</a></li>
+          <li><a routerLink="/contact">Contact</a></li>
+        </ul>
       </div>
 
       <!-- Contact Info -->
-      <div class="col-lg-4 col-md-6">
-        <div class="footer-widget-content">
-          <div class="footer-widget-title animate-on-scroll">
-            <h4>Contact Info</h4>
+      <div>
+        <h4>Contact Info</h4>
+        <div class="footer-contact">
+          <div class="contact-row">
+            <i class="fas fa-phone"></i>
+            <div>
+              <span>Phone</span>
+              <a href="tel:+917901666696">+91 7901666696</a>
+            </div>
           </div>
-          <div class="footer-contact-info">
-            <div class="contact-item animate-on-scroll">
-              <i class="fas fa-phone"></i>
-              <div class="contact-details">
-                <span>Phone</span>
-                <a href="tel:+914029802489">+91 7901666696</a>
-              </div>
+          <div class="contact-row">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span>Email</span>
+              <a href="mailto:info@indowestunited.com">info&#64;indowestunited.com</a>
             </div>
-            <div class="contact-item animate-on-scroll">
-              <i class="fas fa-envelope"></i>
-              <div class="contact-details">
-                <span>Email</span>
-                <a href="mailto:info@indowestunited.com">info&#64;indowestunited.com</a>
-              </div>
-            </div>
-            <div class="contact-item animate-on-scroll">
-              <i class="fas fa-map-marker-alt"></i>
-              <div class="contact-details">
-                <span>Address</span>
-                <p>Flat No 402, Veekay Prime Apartments, Patrika Nagar,
-                  Hitech City, Hyderabad, India</p>
-              </div>
+          </div>
+          <div class="contact-row">
+            <i class="fas fa-location-dot"></i>
+            <div>
+              <span>Address</span>
+              <p>Flat No 402, Veekay Prime Apartments, Patrika Nagar, Hitech City, Hyderabad, India</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Oversized wordmark -->
+    <!-- <div class="footer-wordmark" aria-hidden="true">INDOWEST UNITED</div> -->
+
     <!-- Footer Bottom -->
-    <div class="row align-items-center">
-      <div class="footer-bottom-area">
-        <div class="row">
-          <div class="col-lg-6 col-md-6">
-            <div class="footer-bottom-content">
-              <p>© 2015-2026 IndoWest United. All Rights Reserved.</p>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6">
-            <div class="footer-botton-social-icon">
-              <ul>
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <p>© 2015-2026 IndoWest United. All Rights Reserved.</p>
+      <ul class="footer-social">
+        <li><a href="https://www.facebook.com/share/1Cbj3BQT5e/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="https://x.com/IndoWestUnited" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/indowest-united" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+        <li><a href="https://www.instagram.com/indowest_united" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+      </ul>
     </div>
   </div>
 </footer>
 
 <!-- Scroll to Top Button -->
-<div class="prgoress_indicator">
+<button class="scroll-top" [class.show]="isScrolled" (click)="scrollToTop()" aria-label="Back to top">
   <i class="fas fa-chevron-up"></i>
-</div>
+</button>

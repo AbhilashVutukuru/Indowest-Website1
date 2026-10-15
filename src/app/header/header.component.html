@@ -1,80 +1,36 @@
-<header class="site-header">
-  <div class="container header-inner">
-    <!-- Brand Logo -->
-    <div class="brand">
-      <img 
-        [src]="(themeService.isDarkMode$ | async) ? './assets/darkTheme.png' : './assets/logo.png'" 
-        alt="Indowest United" 
-        class="brand-logo-img" 
-      />
-    </div>
-    
-    <!-- Hamburger icon (visible only on mobile/tablet) -->
-    <button
-      class="navbar-toggler d-lg-none"
-      type="button"
-      (click)="toggleMenu()"
-      aria-label="Toggle navigation"
-    >
-      ☰
-    </button>
+<header class="site-header" [class.scrolled]="scrolled">
+  <div class="iw-wrap">
+    <div class="header-bar">
+      <!-- Brand Logo -->
+      <a routerLink="/home" class="brand" (click)="closeMenu()" aria-label="IndoWest United home">
+        <img src="./assets/darkTheme.png" alt="Indowest United" class="brand-logo-img" />
+      </a>
 
-    <!-- Navigation -->
-    <nav
-      class="main-nav"
-      [class.show]="menuOpen"
-      aria-label="Main navigation"
-    >
-      <a 
-        routerLink="/home"
-        routerLinkActive="active-route"
-        class="nav-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="closeMenu()"
-      >Home</a>
-      
-      <a 
-        routerLink="/about"
-        routerLinkActive="active-route"
-        class="nav-link"
-        (click)="closeMenu()"
-      >About</a>
-      
-      <a 
-        routerLink="/services"
-        routerLinkActive="active-route"
-        class="nav-link"
-        (click)="closeMenu()"
-      >Services</a>
-      
-      <a 
-        routerLink="/business-models"
-        routerLinkActive="active-route"
-        class="nav-link"
-        (click)="closeMenu()"
-      >Business Models</a>
-      
-      <a 
-        routerLink="/products"
-        routerLinkActive="active-route"
-        class="nav-link"
-        (click)="closeMenu()"
-      >Products</a>
+      <!-- Navigation -->
+      <nav class="main-nav" [class.show]="menuOpen" aria-label="Main navigation">
+        <a routerLink="/home" routerLinkActive="active-route" class="nav-link"
+           [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
+        <a routerLink="/about" routerLinkActive="active-route" class="nav-link" (click)="closeMenu()">About</a>
+        <a routerLink="/services" routerLinkActive="active-route" class="nav-link" (click)="closeMenu()">Services</a>
+        <a routerLink="/business-models" routerLinkActive="active-route" class="nav-link" (click)="closeMenu()">Business Models</a>
+        <a routerLink="/products" routerLinkActive="active-route" class="nav-link" (click)="closeMenu()">Products</a>
+        <a routerLink="/contact" routerLinkActive="active-route" class="nav-link" (click)="closeMenu()">Contact</a>
 
-      <a 
-        routerLink="/contact"
-        routerLinkActive="active-route"
-        class="nav-link"
-        (click)="closeMenu()"
-      >Contact</a>
-    </nav>
+        <div class="nav-meta">
+          <span>EST. 2015</span>
+          <a href="tel:+917901666696">+91 7901666696</a>
+        </div>
+      </nav>
 
-    <!-- CTA + Theme Toggle -->
-    <div class="header-cta">
-      <button class="theme-toggle" (click)="toggleTheme()">
-        {{ (themeService.isDarkMode$ | async) ? '☀️' : '🌙' }}
-      </button>
-      <a class="btn primary" href="contact" (click)="closeMenu()">Get in Touch</a>
+      <!-- CTA + mobile toggle -->
+      <div class="header-cta">
+        <a class="iw-btn primary sm" routerLink="/contact" (click)="closeMenu()">
+          Get in Touch <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+        <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-label="Toggle navigation">
+          <i class="fas" [class.fa-bars]="!menuOpen" [class.fa-xmark]="menuOpen"></i>
+        </button>
+      </div>
     </div>
   </div>
 </header>

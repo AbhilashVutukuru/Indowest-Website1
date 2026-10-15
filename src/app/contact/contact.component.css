@@ -1,508 +1,467 @@
-
-.container{
-  max-width: 1340px;
+.contact-top {
+  margin-bottom: 72px;
 }
 
-.contact-section {
-  padding: 35px 0px;
-}
+/* ---------- form ---------- */
 
-/* ----- Intro Section ----- */
-.contact-intro {
-  text-align: center;
-  margin-bottom: 70px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: white;
-  border-radius: 999px;
-  padding: 8px 18px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
-}
-
-.badge .year {
-  background: #ffb400;
-  color: #111;
-  font-weight: 601;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 14px;
-}
-
-.badge .tagline {
-  font-size: 14px;
-  color: #444;
-}
-
-.contact-intro h4 {
- font-size: 16px;
-  color: #666;
-  font-weight: 600;
-  margin-bottom: 15px;
-  margin-top: 0px;
-}
-
-.contact-intro h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
-.contact-intro h1 span {
-  color: #1da1f2;
-}
-
-.contact-intro p {
-  color: #555;
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.contact-intro p .highlight {
-  color: #1da1f2;
-  font-weight: 600;
-}
-
-/* ----- Main Contact Layout ----- */
-/* Left Side - Form */
 .contact-form {
-  background: #e9f5ff;
-  border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  height: 100%;
+  border-color: #1e293b;
 }
 
 .form-header {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-.form-header .icon {
-  background: #1da1f2;
-  color: white;
-  font-size: 1.2rem;
-  padding: 12px;
+.form-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
   border-radius: 10px;
+  background: rgba(1, 166, 240, 0.1);
+  border: 1px solid rgba(1, 166, 240, 0.3);
+  color: #4cc3ff;
+  font-size: 14px;
 }
 
-.form-header h3 {
-  font-size: 1.4rem;
+.form-header h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 700;
 }
 
+.form-hint {
+  margin-bottom: 24px;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .form-group label {
   display: block;
-  font-weight: 600;
-  font-size: 0.9rem;
   margin-bottom: 6px;
+  color: #cbd5e1;
+  font-family: var(--font-mono);
+  font-size: 12px;
 }
 
 .form-group input,
 .form-group textarea {
+  display: block;
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #1e293b;
+  color: #fff;
   font-family: inherit;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s ease;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #64748b;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: #1da1f2;
+  outline: none;
+  border-color: #4cc3ff;
+  box-shadow: 0 0 0 3px rgba(1, 166, 240, 0.15);
 }
 
-.submit-btn {
-  background: #1da1f2;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s ease;
-  width: 100%;
-  font-size: 1rem;
+.form-group .is-invalid {
+  border-color: #f87171;
 }
 
-.submit-btn:hover {
-  background: #0078c8;
+.field-error {
+  margin-top: 6px;
+  color: #fca5a5;
+  font-size: 12px;
 }
 
-/* Right Side - Info */
-.contact-info {
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  height: 100%;
-}
-
-.info-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.form-alert {
   margin-bottom: 20px;
-  justify-content: center;
-}
-
-.info-header .icon {
-  background: #ff5a1f;
-  color: white;
-  font-size: 1.2rem;
-  padding: 12px;
-  border-radius: 10px;
-}
-
-.info-header h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-.contact-info p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 30px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 13.5px;
   line-height: 1.6;
 }
 
-/* Info Cards - 2+1 Layout */
-.info-cards {
-  margin-top: 20px;
+.form-alert.success {
+  background: rgba(46, 176, 46, 0.12);
+  border: 1px solid rgba(46, 176, 46, 0.4);
+  color: #9be89b;
 }
 
-.info-cards .card {
+.form-alert.error {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #fca5a5;
+}
+
+/* ---------- direct channels ---------- */
+
+.contact-side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.talk-card {
+  flex: 1;
+  padding: 32px;
+  border-radius: 26px;
+}
+
+.talk-title {
   display: flex;
   align-items: center;
-  gap: 15px;
-  background: #f9fafb;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-  height: 100%;
-  margin-bottom: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
-.info-cards .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.talk-title i {
+  color: #4cc3ff;
 }
 
-.card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: #f9fafb;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-  height: 100%;
-}
-
-.card i {
-  font-size: 1.4rem;
-  color: white;
-  background: #999;
-  padding: 12px;
-  border-radius: 10px;
-  flex-shrink: 0;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card h4 {
-  font-size: 1.1rem;
-  margin: 0;
+.talk-title h3 {
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #1a1a1a;
 }
 
-.card p {
-  margin: 5px 0 0 0;
-  color: #666;
-  font-size: 0.95rem;
+.talk-card > p,
+.hours-card p {
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-/* Card Colors */
-.card.blue i {
-  background: #1da1f2;
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
 }
 
-.card.orange i {
-  background: #ff5a1f;
-}
-
-.card.green i {
-  background: #4caf50;
-}
-
-/* Maps Section */
-.maps-section {
-  padding: 30px 0px;
-}
-
-.contact-card, .map-card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 30px;
-  height: 100%;
-}
-
-.map-card {
-  background: #e8f6e8;
-}
-
-.card-header {
+.channel {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.icon-box {
-  width: 50px;
-  height: 50px;
-  background: #1da1f2;
-  color: white;
-  font-weight: 600;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 14px;
+  padding: 14px;
   border-radius: 12px;
-  flex-shrink: 0;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #1e293b;
 }
 
-.icon-box.green {
-  background: #7cc242;
+.channel > i {
+  color: #4cc3ff;
+  font-size: 15px;
 }
 
-.card-header h2 {
-  font-size: 1.3rem;
-  color: #3ba949;
-  margin: 0;
+.channel span {
+  display: block;
+  color: #94a3b8;
+  font-size: 10px;
+  letter-spacing: 0.06em;
 }
 
-.card-header p {
-  color: #007bff;
-  font-size: 0.95rem;
-  margin: 0;
-}
-
-.info p {
-  margin: 10px 0;
-  color: #555;
-  line-height: 1.6;
-}
-
-.info i {
-  color: #007bff;
-  margin-right: 10px;
-  width: 16px;
-}
-
-/* Buttons */
-.blue-btn, .green-btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #007bff;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  text-decoration: none;
+.channel a,
+.channel b {
+  color: #fff;
   font-weight: 500;
-  transition: 0.3s;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
 }
 
-.green-btn {
-  background: #2eb02e;
+.channel a:hover {
+  color: #8fd8ff;
 }
 
-.blue-btn:hover, .green-btn:hover {
-  opacity: 0.9;
-  color: white;
-  text-decoration: none;
-  transform: translateY(-1px);
+.hours-card {
+  padding: 24px;
+  border-radius: 26px;
 }
 
-/* Map Card Buttons */
-.btn-row {
-  margin-top: 15px;
+.hours-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  color: #4cc3ff;
+  font-family: var(--font-mono);
+  font-size: 12px;
 }
 
-/* Business Hours */
-.business-hours {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f0f8ff;
+/* ---------- offices ---------- */
+
+.offices {
+  margin-bottom: 60px;
+}
+
+.office-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.iw-tag.partner {
+  background: rgba(110, 70, 0, 0.35);
+  border-color: rgba(255, 180, 0, 0.4);
+  color: #ffd54f;
+}
+
+.iw-link.partner {
+  color: #ffd54f;
+}
+
+.offices h3 {
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.office-lines {
+  margin-top: 16px;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.office-lines b {
+  color: #e2e8f0;
+  font-weight: 400;
+}
+
+/* ---------- location map ---------- */
+
+.map-panel {
+  position: relative;
+  padding: 32px;
+  border-color: rgba(1, 166, 240, 0.32);
+  overflow: hidden;
+}
+
+.map-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.map-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  color: #4cc3ff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.map-head h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+}
+
+.map-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 12px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.map-tabs button {
+  padding: 7px 12px;
+  border: 0;
   border-radius: 8px;
-  border-left: 4px solid #1da1f2;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.business-hours h4 {
-  margin: 0 0 8px 0;
-  color: #1a1a1a;
-  font-size: 1.2rem;
+.map-tabs button:hover {
+  color: #fff;
 }
 
-.business-hours p {
-  margin: 0;
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.5;
+.map-tabs button.active {
+  background: #01a6f0;
+  color: #04121d;
+  font-weight: 600;
 }
 
-/* UK Office Section */
-.uk-office {
-  margin-top: 25px;
-  padding-top: 25px;
-  border-top: 1px solid #eee;
+.map-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.8);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+  overflow: hidden;
 }
 
-.uk-office h3 {
-  color: #1a1a1a;
-  margin-bottom: 15px;
-  font-size: 1.2rem;
+.map-stage svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+.map-beam {
+  animation: iw-pulse 2s ease-in-out infinite;
+}
+
+.map-pin {
+  cursor: pointer;
+}
+
+.map-pin.active .map-ping,
+.map-pin.active circle:first-child {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: iw-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.map-badge {
+  position: absolute;
+  left: 24px;
+  bottom: 16px;
+  max-width: 440px;
+  padding: 16px;
+  border-radius: 12px;
+  border-color: rgba(1, 166, 240, 0.3);
+}
+
+.map-badge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.map-badge-top b {
+  color: #fff;
+  font-size: 12.5px;
+}
+
+.map-badge-top i {
+  margin-right: 4px;
+  color: #4cc3ff;
+}
+
+.map-badge-top i.partner {
+  color: #ffb400;
+}
+
+.map-badge p {
+  color: #cbd5e1;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.map-badge-line {
+  margin-top: 8px;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.map-badge-line b {
+  color: #e2e8f0;
+  font-weight: 400;
+}
+
+.map-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #1e293b;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.map-foot b {
+  color: #4cc3ff;
+  font-weight: 400;
+}
+
+.map-actions {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
   .contact-form,
-  .contact-info {
-    padding: 30px;
+  .talk-card {
+    padding: 24px 20px;
   }
-  
-  .contact-intro h1 {
-    font-size: 2.4rem;
-  }
-}
 
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 25px 5%;
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
-  
-  .maps-section {
-    padding: 25px 5%;
+
+  .map-panel {
+    padding: 20px 16px;
   }
-  
-  .contact-intro h1 {
-    font-size: 2rem;
-  }
-  
-  .contact-intro p {
-    font-size: 1rem;
-  }
-  
-  .contact-form,
-  .contact-info {
-    padding: 25px;
-  }
-  
-  .info-header {
+
+  .map-head {
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    align-items: flex-start;
   }
-  
-  .form-header {
+
+  /* on phones the address card sits under the map instead of covering it */
+  .map-stage {
+    height: auto;
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    padding-bottom: 12px;
   }
-  
-  .card-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-}
 
-@media (max-width: 576px) {
-  .contact-intro h1 {
-    font-size: 1.8rem;
+  .map-stage svg {
+    height: 240px;
   }
-  
-  .contact-intro p {
-    font-size: 0.95rem;
-  }
-  
-  .badge {
-    /* flex-direction: column; */
-    gap: 5px;
-  }
-  
-  .contact-form,
-  .contact-info {
-    padding: 20px;
-  }
-  
-  .contact-card,
-  .map-card {
-    padding: 20px;
-  }
-  
-  .info-cards .card {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px 15px;
-  }
-  
-  .info-cards .card i {
-    margin-bottom: 10px;
-  }
-  
-  .btn-row .row .col-6 {
-    margin-bottom: 10px;
-  }
-}
 
-
-
-/* Animation initial state */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-out;
-}
-
-/* When visible */
-.animate-on-scroll.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Optional: smooth stagger for multiple items */
-.animate-on-scroll:nth-child(2) {
-  transition-delay: 0.1s;
-}
-.animate-on-scroll:nth-child(3) {
-  transition-delay: 0.2s;
-}
-.animate-on-scroll:nth-child(4) {
-  transition-delay: 0.3s;
+  .map-badge {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 0 12px;
+  }
 }

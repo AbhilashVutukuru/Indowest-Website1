@@ -1,62 +1,66 @@
 <div class="chatbot-container">
   <!-- Floating Chatbot Button -->
-  <!-- <button 
-    class="chatbot-button" 
-    (click)="toggleChat()"
-    title="Chat with Indowest"
-    *ngIf="!isChatOpen"
-  >
-    <i class="fas fa-comments"></i>
-  </button> -->
+  <button class="chatbot-button" type="button" (click)="toggleChat()"
+          [class.open]="isChatOpen"
+          [attr.aria-label]="isChatOpen ? 'Close chat' : 'Chat with IndoWest'"
+          title="Chat with IndoWest">
+    <i class="fas" [class.fa-comments]="!isChatOpen" [class.fa-xmark]="isChatOpen"></i>
+    <span class="chatbot-ping" *ngIf="!isChatOpen" aria-hidden="true"></span>
+  </button>
 
   <!-- Chat Window -->
-  <div class="chatbot-window" *ngIf="isChatOpen">
+  <section class="chatbot-window" *ngIf="isChatOpen" role="dialog" aria-label="IndoWest assistant">
     <!-- Header -->
-    <!-- <div class="chatbot-header">
-      <h3>Indowest Chat Bot</h3>
-      <button class="close-btn" (click)="closeChat()">
-        <i class="fas fa-times"></i>
+    <header class="chatbot-header">
+      <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+      <div class="chatbot-title">
+        <h3>IndoWest Assistant</h3>
+        <span><span class="online-dot"></span> Answers from our website</span>
+      </div>
+      <button class="close-btn" type="button" (click)="closeChat()" aria-label="Close chat">
+        <i class="fas fa-xmark"></i>
       </button>
-    </div> -->
+    </header>
 
     <!-- Messages -->
-    <!-- <div class="chatbot-messages">
-      <div 
-        *ngFor="let message of messages" 
-        class="message"
-        [ngClass]="message.sender"
-      >
-        <div 
-          class="message-content"
-          [ngClass]="{'loading': message.isLoading}"
-        >
-          <span *ngIf="!message.isLoading">{{ message.text }}</span>
+    <div class="chatbot-messages" #messageList aria-live="polite">
+      <div *ngFor="let message of messages" class="message" [ngClass]="message.sender">
+        <div class="message-content" [class.loading]="message.isLoading">
+          <span *ngIf="!message.isLoading" class="message-text">{{ message.text }}</span>
           <span *ngIf="message.isLoading" class="typing-indicator">
             <span></span><span></span><span></span>
           </span>
+
+          <ng-container *ngIf="message.link as link">
+            <a *ngIf="link.external" class="message-link" [href]="link.route" target="_blank" rel="noopener">
+              {{ link.label }} <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a *ngIf="!link.external" class="message-link" [routerLink]="link.route" [fragment]="link.fragment">
+              {{ link.label }} <i class="fas fa-arrow-right"></i>
+            </a>
+          </ng-container>
         </div>
       </div>
-    </div> -->
+    </div>
+
+    <!-- Suggested questions -->
+    <div class="chatbot-suggestions" *ngIf="suggestions.length && !isWaitingForResponse">
+      <button type="button" *ngFor="let s of suggestions" (click)="ask(s)">{{ s }}</button>
+    </div>
 
     <!-- Input Area -->
-    <!-- <div class="chatbot-input-area">
-      <div class="input-container">
-        <textarea
-          [(ngModel)]="userInput"
-          placeholder="Ask me anything about Indowest..."
-          class="chatbot-input"
-          (keydown)="handleKeyPress($event)"
-          rows="2"
-        ></textarea>
-        <button 
-          class="send-btn"
-          (click)="sendMessage()"
-          [disabled]="isWaitingForResponse || !userInput.trim()"
-          title="Send message (Enter)"
-        >
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div> -->
-  </div>
+    <div class="chatbot-input-area">
+      <textarea #inputBox
+        [(ngModel)]="userInput"
+        placeholder="Ask about our services, agents, pricing..."
+        class="chatbot-input"
+        (keydown)="handleKeyPress($event)"
+        rows="1"
+        aria-label="Your question"></textarea>
+      <button class="send-btn" type="button" (click)="sendMessage()"
+              [disabled]="isWaitingForResponse || !userInput.trim()" title="Send message (Enter)" aria-label="Send">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </section>
 </div>

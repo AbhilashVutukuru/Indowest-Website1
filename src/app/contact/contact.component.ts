@@ -13,6 +13,13 @@ export class ContactComponent implements OnInit {
   message = '';
   messageType: 'success' | 'error' = 'success';
 
+  // which office the location map is showing
+  activePin: 'hyderabad' | 'nottingham' = 'hyderabad';
+  readonly hyderabadMapUrl = 'https://www.google.com/maps/place/VeeKay+Prime,+Patrika+Nagar,+Hitech+City,+Hyderabad,+Telangana+500081/';
+  readonly hyderabadDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=VeeKay+Prime,+Patrika+Nagar,+Hitech+City,+Hyderabad,+Telangana+500081';
+  readonly nottinghamMapUrl = 'https://www.google.com/maps/search/?api=1&query=Nottingham+United+Kingdom';
+  readonly nottinghamDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=Nottingham+United+Kingdom';
+
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService

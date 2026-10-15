@@ -5,22 +5,146 @@
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background-color: #fff;
+  background-color: #05070c;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .spinner {
-  border: 5px solid #eee;
-  border-top: 5px solid #01a6f0;
+  border: 4px solid #1e293b;
+  border-top: 4px solid #01a6f0;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.app-main {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* ---------- ambient background ---------- */
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #05070c;
+}
+
+.bg-layer canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+}
+
+.bg-glow.g1 {
+  top: -160px;
+  left: -160px;
+  width: 600px;
+  height: 600px;
+  background: rgba(1, 110, 170, 0.2);
+}
+
+.bg-glow.g2 {
+  top: 33%;
+  right: -160px;
+  width: 650px;
+  height: 650px;
+  background: rgba(255, 154, 86, 0.07);
+}
+
+.bg-glow.g3 {
+  bottom: 40px;
+  left: 25%;
+  width: 700px;
+  height: 700px;
+  background: rgba(0, 60, 150, 0.16);
+}
+
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background: radial-gradient(circle at 50% 30%, rgba(4, 30, 60, 0.3) 0%, rgba(5, 7, 12, 0.95) 75%);
+}
+
+/* ---------- scroll progress ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.scroll-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #4cc3ff, #01a6f0, #ffb400);
+  box-shadow: 0 0 10px rgba(1, 166, 240, 0.8);
+}
+
+/* ---------- cursor ring ---------- */
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1.5px solid rgba(76, 195, 255, 0.55);
+  border-radius: 50%;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, background 0.2s ease, opacity 0.3s ease;
+}
+
+.cursor-ring.on {
+  opacity: 1;
+}
+
+.cursor-ring.hover {
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  background: rgba(1, 166, 240, 0.12);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-ring { display: none; }
 }
