@@ -1,12 +1,12 @@
 <div class="chatbot-container">
   <!-- Floating Chatbot Button -->
-  <button class="chatbot-button" type="button" (click)="toggleChat()"
+  <!-- <button class="chatbot-button" type="button" (click)="toggleChat()"
           [class.open]="isChatOpen"
           [attr.aria-label]="isChatOpen ? 'Close chat' : 'Chat with IndoWest'"
           title="Chat with IndoWest">
     <i class="fas" [class.fa-comments]="!isChatOpen" [class.fa-xmark]="isChatOpen"></i>
     <span class="chatbot-ping" *ngIf="!isChatOpen" aria-hidden="true"></span>
-  </button>
+  </button> -->
 
   <!-- Chat Window -->
   <section class="chatbot-window" *ngIf="isChatOpen" role="dialog" aria-label="IndoWest assistant">
