@@ -361,3 +361,74 @@
     height: calc(100vh - 110px);
   }
 }
+
+/* ---------- AI answers: formatted text, live typing caret ---------- */
+
+.message-text {
+  white-space: normal;
+}
+
+.message-text ::ng-deep p {
+  margin: 0;
+}
+
+.message-text ::ng-deep .gap {
+  display: block;
+  height: 8px;
+}
+
+.message-text ::ng-deep ul,
+.message-text ::ng-deep ol {
+  margin: 4px 0;
+  padding-left: 18px;
+  list-style: revert;
+}
+
+.message-text ::ng-deep li {
+  margin: 2px 0;
+}
+
+.message-text ::ng-deep strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.message.user .message-text ::ng-deep strong {
+  color: inherit;
+}
+
+.message-text ::ng-deep a {
+  color: #8fd8ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.message-text ::ng-deep a:hover {
+  color: #fff;
+}
+
+.stream-caret {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  margin-top: 4px;
+  background: #4cc3ff;
+  animation: chat-caret 0.9s ease-in-out infinite;
+}
+
+.online-dot.offline {
+  background: #94a3b8;
+  box-shadow: none;
+}
+
+@keyframes chat-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* "please try again" notice when the AI couldn't answer */
+.message.bot .message-content.error {
+  background: rgba(255, 180, 0, 0.08);
+  border-color: rgba(255, 180, 0, 0.35);
+  color: #ffe08a;
+}

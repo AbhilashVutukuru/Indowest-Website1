@@ -1,13 +1,16 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ChatKnowledgeService, ChatLink } from './chat-knowledge.service';
+import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ChatAiError, ChatAiService, ChatTurn, formatChatText } from './chat-ai.service';
 
 export interface Message {
   id: number;
   text: string;
+  html: string;
   sender: 'user' | 'bot';
   timestamp: Date;
   isLoading?: boolean;
-  link?: ChatLink;
+  isStreaming?: boolean;
+  isError?: boolean;   // "please try again" notice when the AI couldn't answer
 }
 
 @Component({
@@ -27,13 +30,29 @@ export class ChatbotComponent implements OnInit, OnDestroy {
   messageCounter = 0;
   isWaitingForResponse = false;
 
-  private replyTimer: any;
+  /** null = not checked yet, true = AI reachable, false = chat server or API key missing */
+  aiEnabled: boolean | null = null;
 
-  constructor(private knowledge: ChatKnowledgeService) { }
+  /** Starting ideas shown under the greeting; clicking one sends it to the AI. */
+  readonly starterQuestions = [
+    'What services do you offer?',
+    'Which AI agents can you build?',
+    'How do I get started with AI?',
+    'Tell me about AI SmartGrader',
+    'How can I contact you?'
+  ];
+
+  private abort?: AbortController;
+
+  constructor(
+    private ai: ChatAiService,
+    private router: Router,
+    private zone: NgZone
+  ) { }
 
   ngOnInit(): void {
-    this.addBotMessage('Hi! 👋 I\'m the IndoWest assistant. Ask me about our AI services, AI agents, AI SmartGrader, how we work or how to reach us.');
-    this.suggestions = this.knowledge.starterQuestions;
+    this.addBotMessage('Hi! 👋 I\'m Indie, your personal AI assistant. Ask me anything about our AI services, AI agents, AI SmartGrader, how we work or how to reach us.');
+    this.suggestions = this.starterQuestions;
   }
 
   /**
@@ -42,6 +61,7 @@ export class ChatbotComponent implements OnInit, OnDestroy {
   toggleChat(): void {
     this.isChatOpen = !this.isChatOpen;
     if (this.isChatOpen) {
+      if (this.aiEnabled === null) this.checkAi();
       this.scrollToBottom();
       setTimeout(() => this.inputBox?.nativeElement.focus(), 150);
     }
@@ -54,6 +74,10 @@ export class ChatbotComponent implements OnInit, OnDestroy {
     this.isChatOpen = false;
   }
 
+  private async checkAi(): Promise<void> {
+    this.aiEnabled = await this.ai.isAvailable();
+  }
+
   /** Send a suggestion chip as if the visitor had typed it. */
   ask(question: string): void {
     this.userInput = question;
@@ -63,7 +87,7 @@ export class ChatbotComponent implements OnInit, OnDestroy {
   /**
    * Send user message
    */
-  sendMessage(): void {
+  async sendMessage(): Promise<void> {
     const question = this.userInput.trim();
     if (!question || this.isWaitingForResponse) {
       return;
@@ -72,21 +96,78 @@ export class ChatbotComponent implements OnInit, OnDestroy {
     this.addUserMessage(question);
     this.userInput = '';
     this.suggestions = [];
-
-    // short "typing" pause so the reply doesn't appear instantly
     this.isWaitingForResponse = true;
-    this.addBotMessage('', true);
+    const reply = this.addBotMessage('', true);
 
-    this.replyTimer = setTimeout(() => {
-      const reply = this.knowledge.answer(question);
+    // re-check each time the AI was unreachable, so the chat recovers once the server is back
+    if (!this.aiEnabled) await this.checkAi();
 
-      if (this.messages.length > 0 && this.messages[this.messages.length - 1].isLoading) {
-        this.messages.pop();
+    if (!this.aiEnabled) {
+      this.showError(reply, 'Our AI assistant is offline right now. Please try again shortly, or contact us at info@indowestunited.com or +91 7901666696.');
+      return;
+    }
+
+    try {
+      await this.streamAiReply(reply);
+    } catch (error) {
+      if (reply.text) {
+        // the answer was cut off part-way: keep what arrived
+        this.finishReply(reply);
+      } else if (error instanceof ChatAiError && error.message === 'rate_limited') {
+        this.showError(reply, "I'm answering a lot of questions right now. Please try again in a minute.");
+      } else {
+        if (error instanceof ChatAiError && (error.status === 0 || error.status === 503)) {
+          this.aiEnabled = false;
+        }
+        this.showError(reply, "Sorry, I couldn't answer that just now. Please try again, or contact us at info@indowestunited.com.");
       }
-      this.addBotMessage(reply.text, false, reply.link);
-      this.suggestions = reply.suggestions;
-      this.isWaitingForResponse = false;
-    }, 650);
+    }
+    this.isWaitingForResponse = false;
+  }
+
+  private showError(reply: Message, text: string): void {
+    reply.text = text;
+    reply.html = formatChatText(text);
+    reply.isError = true;
+    this.finishReply(reply);
+    this.isWaitingForResponse = false;
+    this.scrollToBottom();
+  }
+
+  /** Streams the AI's answer into the reply bubble as it is written. */
+  private async streamAiReply(reply: Message): Promise<void> {
+    const history: ChatTurn[] = this.messages
+      .filter(m => m !== reply && !m.isLoading && !m.isError && m.text && m.id > 0)   // id 0 is the greeting
+      .map(m => ({ role: m.sender === 'user' ? 'user' : 'assistant', text: m.text }));
+
+    this.abort = new AbortController();
+
+    await this.ai.stream(history, text => {
+      this.zone.run(() => {
+        reply.isLoading = false;
+        reply.isStreaming = true;
+        reply.text += text;
+        reply.html = formatChatText(reply.text);
+        this.scrollToBottom();
+      });
+    }, this.abort.signal);
+
+    this.finishReply(reply);
+  }
+
+  private finishReply(reply: Message): void {
+    reply.isLoading = false;
+    reply.isStreaming = false;
+  }
+
+  /** Links inside answers navigate within the site instead of reloading the page. */
+  onMessageClick(event: MouseEvent): void {
+    const anchor = (event.target as HTMLElement).closest('a');
+    const href = anchor?.getAttribute('href');
+    if (href && href.startsWith('/')) {
+      event.preventDefault();
+      this.router.navigateByUrl(href);
+    }
   }
 
   /**
@@ -96,6 +177,7 @@ export class ChatbotComponent implements OnInit, OnDestroy {
     this.messages.push({
       id: this.messageCounter++,
       text: text,
+      html: formatChatText(text),
       sender: 'user',
       timestamp: new Date()
     });
@@ -105,16 +187,18 @@ export class ChatbotComponent implements OnInit, OnDestroy {
   /**
    * Add bot message to chat
    */
-  private addBotMessage(text: string = '', isLoading: boolean = false, link?: ChatLink): void {
-    this.messages.push({
+  private addBotMessage(text: string = '', isLoading: boolean = false): Message {
+    const message: Message = {
       id: this.messageCounter++,
       text: text,
+      html: formatChatText(text),
       sender: 'bot',
       timestamp: new Date(),
-      isLoading: isLoading,
-      link: link
-    });
+      isLoading: isLoading
+    };
+    this.messages.push(message);
     this.scrollToBottom();
+    return message;
   }
 
   /**
@@ -126,7 +210,7 @@ export class ChatbotComponent implements OnInit, OnDestroy {
       if (chatBox) {
         chatBox.scrollTop = chatBox.scrollHeight;
       }
-    }, 50);
+    }, 30);
   }
 
   /**
@@ -140,6 +224,6 @@ export class ChatbotComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearTimeout(this.replyTimer);
+    this.abort?.abort();
   }
 }

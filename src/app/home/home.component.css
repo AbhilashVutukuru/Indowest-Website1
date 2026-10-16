@@ -1032,6 +1032,201 @@
 }
 
 /* ============================================
+   AI AGENTS — "digital colleagues"
+   ============================================ */
+
+.agents-section {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(1, 166, 240, 0.12), transparent 70%),
+    linear-gradient(to bottom, #03060d, #060b16 55%, #03060d);
+  border-top: 1px solid rgba(1, 166, 240, 0.18);
+  border-bottom: 1px solid rgba(1, 166, 240, 0.12);
+}
+
+/* glowing seam along the top edge */
+.agents-section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: min(720px, 80%);
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--brand), var(--orange), transparent);
+  box-shadow: 0 0 24px rgba(1, 166, 240, 0.6);
+}
+
+.agents-gridbg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(143, 216, 255, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%);
+}
+
+.agents-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+}
+
+.agents-glow.a { top: 25%; left: -8%; background: rgba(1, 166, 240, 0.14); }
+.agents-glow.b { bottom: -5%; right: -8%; background: rgba(255, 154, 86, 0.1); }
+
+.agents-grid {
+  position: relative;
+}
+
+/* per-card accent: IndoWest blue, alternating with a soft orange */
+.agent-card { --accent: var(--brand-light); --accent-rgb: 1, 166, 240; }
+.agent-card.accent-1 { --accent: var(--orange); --accent-rgb: 255, 154, 86; }
+
+.agent-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 28px 26px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(20, 28, 44, 0.7), rgba(10, 14, 24, 0.7));
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* soft light that fades in from the top on hover */
+.agent-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 60% at 50% 0%, rgba(var(--accent-rgb), 0.1), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+/* thin accent line along the top */
+.agent-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30%;
+  right: 30%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.7), transparent);
+  transition: left 0.35s ease, right 0.35s ease;
+}
+
+.agent-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--accent-rgb), 0.3);
+  box-shadow: 0 24px 48px -28px rgba(var(--accent-rgb), 0.45);
+}
+
+.agent-card:hover::before { opacity: 1; }
+.agent-card:hover::after { left: 10%; right: 10%; }
+
+.agent-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.agent-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  color: var(--accent);
+  font-size: 19px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.agent-card:hover .agent-icon {
+  transform: scale(1.06);
+  box-shadow: 0 0 24px -6px rgba(var(--accent-rgb), 0.6);
+}
+
+.agent-index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  transition: color 0.35s ease;
+}
+
+.agent-card:hover .agent-index {
+  color: var(--accent);
+}
+
+.agent-card h3 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.agent-card p {
+  flex: 1;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.agent-foot {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.agent-foot .card-caption {
+  color: var(--dim);
+}
+
+.agent-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-soft);
+  font-size: 12px;
+}
+
+.agents-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 48px auto 0;
+  padding: 14px 16px 14px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(1, 166, 240, 0.25);
+  background: rgba(13, 17, 28, 0.75);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  color: var(--text-soft);
+  font-size: 14.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-card:hover { transform: none; }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 
@@ -1058,6 +1253,12 @@
 }
 
 @media (max-width: 640px) {
+  .agents-cta {
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+  }
+
   .hero {
     padding: 120px 0 60px;
   }
@@ -1124,4 +1325,16 @@
 
 .iw-head.center > .iw-btn {
   margin-top: 22px;
+}
+
+/* link to the ARCVIK partner site */
+.partner-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.partner-link:hover {
+  color: var(--brand-light);
 }

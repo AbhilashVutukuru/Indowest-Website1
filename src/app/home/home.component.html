@@ -30,7 +30,7 @@
             We build AI agents and intelligent software that take repetitive work off your team.
           </p>
           <p class="hero-intro">
-            We partner with UK-based <b>ARCVIK Solutions Ltd</b> to deliver production-ready
+            We partner with UK-based <a href="https://arcvik.co.uk/" target="_blank" rel="noopener" class="partner-link">ARCVIK Solutions Ltd</a> to deliver production-ready
             AI solutions and modern software engineering — combining innovation, technical expertise, and cost-effective delivery for businesses worldwide.
           </p>
 
@@ -124,7 +124,7 @@
         <h2 class="iw-h2 animate-on-scroll">About <span class="iw-grad">Us</span></h2>
         <p class="iw-sub animate-on-scroll">
           <b>IndoWest United</b> is a leading software development company based in India, working in close
-          partnership with <b>ARCVIK Solutions Ltd (UK)</b>. Together, we deliver innovative, cost-efficient,
+          partnership with <a href="https://arcvik.co.uk/" target="_blank" rel="noopener" class="partner-link">ARCVIK Solutions Ltd (UK)</a>. Together, we deliver innovative, cost-efficient,
           and high-quality technology solutions for businesses worldwide.
         </p>
       </div>
@@ -182,31 +182,43 @@
   <!-- ========================================================
        3. AI AGENTS
        ======================================================== -->
-  <section id="agents" class="iw-section alt">
+  <section id="agents" class="iw-section agents-section">
+    <div class="agents-gridbg" aria-hidden="true"></div>
+    <div class="agents-glow a" aria-hidden="true"></div>
+    <div class="agents-glow b" aria-hidden="true"></div>
+
     <div class="iw-wrap">
       <div class="iw-head center">
         <span class="iw-eyebrow animate-on-scroll">Autonomous Workforce</span>
-        <h2 class="iw-h2 animate-on-scroll">Digital Colleagues That Get Real Work Done</h2>
+        <h2 class="iw-h2 animate-on-scroll">Digital Colleagues That Get <span class="iw-grad">Real Work Done</span></h2>
         <p class="iw-sub animate-on-scroll">
           AI agents don't just answer questions — they plan, act across your systems and finish the job.
-          Here is what we can build for you.
         </p>
       </div>
 
-      <div class="iw-grid cols-3">
-        <div class="iw-card animate-on-scroll" *ngFor="let agent of agents">
-          <div class="grow">
-            <div class="iw-icon"><i class="fas" [ngClass]="agent.icon"></i></div>
-            <h3>{{ agent.title }}</h3>
-            <p>{{ agent.description }}</p>
+      <div class="iw-grid cols-3 agents-grid">
+        <div class="agent-card animate-on-scroll" *ngFor="let agent of agents; let i = index"
+             [ngClass]="'accent-' + (i % 2)">
+          <div class="agent-top">
+            <div class="agent-icon"><i class="fas" [ngClass]="agent.icon"></i></div>
+            <span class="agent-index" aria-hidden="true">0{{ i + 1 }}</span>
           </div>
-          <div class="foot">
-            <span class="card-caption">Works with:</span>
+
+          <h3>{{ agent.title }}</h3>
+          <p>{{ agent.description }}</p>
+
+          <div class="agent-foot">
+            <span class="card-caption">Works with</span>
             <div class="iw-chips">
-              <span class="iw-chip" *ngFor="let tool of agent.tools">{{ tool }}</span>
+              <span class="agent-chip" *ngFor="let tool of agent.tools">{{ tool }}</span>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="agents-cta animate-on-scroll">
+        <span>Have a process in mind? We'll scope your first agent.</span>
+        <a [routerLink]="['/contact']" class="iw-btn primary sm">Build my agent <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

@@ -1,12 +1,12 @@
 <div class="chatbot-container">
   <!-- Floating Chatbot Button -->
-  <!-- <button class="chatbot-button" type="button" (click)="toggleChat()"
+  <button class="chatbot-button" type="button" (click)="toggleChat()"
           [class.open]="isChatOpen"
           [attr.aria-label]="isChatOpen ? 'Close chat' : 'Chat with IndoWest'"
           title="Chat with IndoWest">
     <i class="fas" [class.fa-comments]="!isChatOpen" [class.fa-xmark]="isChatOpen"></i>
     <span class="chatbot-ping" *ngIf="!isChatOpen" aria-hidden="true"></span>
-  </button> -->
+  </button>
 
   <!-- Chat Window -->
   <section class="chatbot-window" *ngIf="isChatOpen" role="dialog" aria-label="IndoWest assistant">
@@ -14,8 +14,11 @@
     <header class="chatbot-header">
       <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
       <div class="chatbot-title">
-        <h3>IndoWest Assistant</h3>
-        <span><span class="online-dot"></span> Answers from our website</span>
+        <h3>Indie</h3>
+        <span>
+          <span class="online-dot" [class.offline]="aiEnabled === false"></span>
+          {{ aiEnabled === false ? 'AI assistant · Offline' : 'AI assistant · Online' }}
+        </span>
       </div>
       <button class="close-btn" type="button" (click)="closeChat()" aria-label="Close chat">
         <i class="fas fa-xmark"></i>
@@ -23,22 +26,15 @@
     </header>
 
     <!-- Messages -->
-    <div class="chatbot-messages" #messageList aria-live="polite">
+    <div class="chatbot-messages" #messageList aria-live="polite" (click)="onMessageClick($event)">
       <div *ngFor="let message of messages" class="message" [ngClass]="message.sender">
-        <div class="message-content" [class.loading]="message.isLoading">
-          <span *ngIf="!message.isLoading" class="message-text">{{ message.text }}</span>
+        <div class="message-content" [class.loading]="message.isLoading" [class.error]="message.isError">
+          <div *ngIf="!message.isLoading" class="message-text" [innerHTML]="message.html"></div>
+          <span *ngIf="message.isStreaming" class="stream-caret" aria-hidden="true"></span>
           <span *ngIf="message.isLoading" class="typing-indicator">
             <span></span><span></span><span></span>
           </span>
 
-          <ng-container *ngIf="message.link as link">
-            <a *ngIf="link.external" class="message-link" [href]="link.route" target="_blank" rel="noopener">
-              {{ link.label }} <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a *ngIf="!link.external" class="message-link" [routerLink]="link.route" [fragment]="link.fragment">
-              {{ link.label }} <i class="fas fa-arrow-right"></i>
-            </a>
-          </ng-container>
         </div>
       </div>
     </div>
